@@ -1,5 +1,5 @@
 #Scrailability
-
+Project Description: This web application provides a social platform where people can potentially find their gym partners. We will collect rigistered members' information such as age, height, weight, schedule, location, preference, etc, and orginzation it into data layer. At the back end, we run a matching alogrithm that matches memebers together who share high compability. Eventually, we recommend the matching result to users. Moreover, based on users feedbak by marking as unlike or like, we will adjust our parameters in our matching alogrithm to find more personalized matching. 
 ##Team Members
 - Soomin Jeong
   ![Soomin Jeong](https://scontent-sjc2-1.xx.fbcdn.net/hprofile-xap1/v/t1.0-1/p160x160/10388635_10203705939316343_6753214294767401392_n.jpg?oh=89ebd2f3a466aefe3763f390dfa7de40&oe=568E3790)
