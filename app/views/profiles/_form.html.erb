@@ -10,10 +10,81 @@
       </ul>
     </div>
   <% end %>
+
+
   <div class="field">
-      <%= f.text_field :name %>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %><br/>
+      <%= f.label :nick_name %><br />
       <%= f.text_field :nick_name %>
+      
+      <%= label_tag :name, 'Name:' %>
   </div>
+
+  <div class="field">
+      <%= f.label :weight %><br />
+      <%= f.text_field :weight %> kg<br/>
+  </div>
+
+  <div class="field">
+      <%= f.label :height %><br />
+      <%= f.text_field :height %> cm<br/>
+  </div>
+
+
+  <div class="field">
+      <%= f.label :add1 %><br />
+      <%= f.text_field :add1 %><br/>
+      <%= f.label :add2 %><br />
+      <%= f.text_field :add2 %><br/>
+      <%= f.label :city %><br />
+      <%= f.text_field :city %><br/>
+      <%= f.label :state %><br />
+      <%= f.text_field :state %><br/>
+      <%= f.label :post_code %><br />
+      <%= f.text_field :post_code %><br/>
+      
+  </div>
+
+
+<table style="width:100%">
+  <tr>
+    <td>Month</td>
+    <td>Day</td> 
+    <td>Year</td>
+  </tr>
+  <tr>
+    <td>
+      <select name="month">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </td>
+
+    <td>
+      <select name="day">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </td> 
+
+    <td>
+      <select name="year">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </td>
+  </tr>
+</table>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
