@@ -6,9 +6,23 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body class= '<%= controller.controller_name %>'>
+	<% if controller.controller_name == "discoveries" %>
+<!-- 	<div id="banner">
+		<%= image_tag("banner.png") %>
+	</div>
+ -->	<div id="columns">
+		<div id="side">
+			<ul>
+				<li><a href="http://localhost:3000/profiles/1/edit">profile</a></li>
+				<li><a href="http://www..../faq">suggested matches</a></li>
+				 <li><a href="http://www..../news">find a gym</a></li> 
+			</ul> 
+		</div>
+		<% end %>
+		<div id="main">
+			<%= yield %>
+  		</div>
+  	</div>
 </body>
 </html>
