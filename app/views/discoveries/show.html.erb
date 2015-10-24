@@ -4,9 +4,8 @@
 
 <% @people.each do |profile| %>
 	<div class="entry">
-	<p>
-	<%= puts @user_id %>
-	</p>
+	<a href= <%= profile_path(profile.id)%> >
 	<%= image_tag(profile.image_url) %>
+	</a>
 	</div>
 <% end %>
