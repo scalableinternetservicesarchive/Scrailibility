@@ -5,7 +5,7 @@
 <% @people.each do |profile| %>
 	<div class="entry">
 	<a href= <%= profile_path(profile.id)%> >
-	<%= image_tag(profile.image_url) %>
+	<%= image_tag profile.photo.url(:thumb)%>
 	</a>
 	</div>
 <% end %>

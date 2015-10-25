@@ -5,4 +5,5 @@ class DiscoveriesController < ApplicationController
   	def show
   		@people = Profile.all
   	end
+
 end
