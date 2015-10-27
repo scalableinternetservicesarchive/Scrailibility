@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<table>
+	<tr>
+		<td>name: <%= @profile.name%></td>
+	</tr>
+	<tr>
+		<td>age: <%=@profile.age%></td>
+	</tr>
+</table>
+<%= link_to 'Back', discovery_path %>

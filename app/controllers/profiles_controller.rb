@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
 
   # GET /profiles
   # GET /profiles.json
@@ -10,23 +11,36 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @profile = Profile.find(params[:id])
   end
 
   # GET /profiles/new
   def new
+    @action = "create"
     @profile = Profile.new
   end
 
   # GET /profiles/1/edit
   def edit
+    @action = "update"
   end
 
   # POST /profiles
   # POST /profiles.json
   def create
+    user = current_user
+    ## associated reference doesn't work user.profile return nil
+    # if @user.nil?
+    #   redirect_to("http://google.com")
+    #   return
+    # else
+    #   redirect_to("http://yahoo.com")
+    #   return
+    # end
+    # @profile = user.profile.build(profile_params)
     @profile = Profile.new(profile_params)
-    # @profile.user_id = session[:user_id] 
-    session[:profile_id] = @profile.id
+    @profile.user_id = user.id
+
 
     respond_to do |format|
       if @profile.save
@@ -72,6 +86,6 @@ class ProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:name, :nick_name, :age, :height, :weight, :add1, 
-       :add2, :city, :state, :post_code, :birthday)
+       :add2, :city, :state, :post_code, :birthday, :image_url, :id)
     end
 end

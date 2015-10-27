@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,8 +14,8 @@
  *= require_tree .
  *= require_self
  */
-
-  #banner {
+=======
+#banner {
  	background: #9c9;
  	padding: 10px;
  	border-bottom: 2px solid;
@@ -27,6 +28,9 @@
  		width: 100px;
  		height: 20px;	
 	} 
+}
+input.login {
+  color: red;
 }
  #notice { 
  	color: #000 !important; 
@@ -89,3 +93,4 @@
 		}
 	}	
 }
+>>>>>>> e66575ee242db03a35f65f76e97a1774fa964fae
