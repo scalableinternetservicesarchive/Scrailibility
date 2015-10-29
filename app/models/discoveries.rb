@@ -1,6 +1,8 @@
-class LocationService < ActiveRecord::Base
-  has_many :profiles
-  include ActiveRecord::Singleton
+require 'singleton'
+
+class Discoveries < ActiveRecord::Base
+  self.table_name = "profiles"
+  include Singleton
 
   def findNearbyUsers(uid, radius)
 =begin
@@ -11,8 +13,8 @@ class LocationService < ActiveRecord::Base
 				+ SIN(RADIANS($latitude))
 				* SIN(RADIANS(center_lat))))) < radius
 =end
-    loc = Profiles.select("latitude, longitude").where(:uid.equals => uid).to_hash
-    distance = Profiles.where("(69.0 * DEGREES(ACOS(COS(RADIANS(latitude))
+    loc = Profile.select("latitude, longitude").where("user_id = ?", uid).values()
+    distance = Profile.where("(69.0 * DEGREES(ACOS(COS(RADIANS(latitude))
     * COS(RADIANS(?))
     * COS(RADIANS(longitude) - RADIANS(?))
     + SIN(RADIANS(latitude))
