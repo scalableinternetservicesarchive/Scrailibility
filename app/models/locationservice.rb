@@ -1,7 +1,6 @@
 require 'singleton'
 
 class LocationService
-  belongs_to :profile
   include Singleton
 
   def findNearbyUsers(uid, radius)
