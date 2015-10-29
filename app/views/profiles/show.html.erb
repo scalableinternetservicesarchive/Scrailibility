@@ -4,7 +4,7 @@
 		<td>name: <%= @profile.name%></td>
 	</tr>
 	<tr>
-		<td>age: <%=@profile.age%></td>
+		<td><%= image_tag @profile.photo.url(:medium)%></td>
 	</tr>
 </table>
 <%= link_to 'Back', discovery_path %>

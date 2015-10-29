@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+
   # GET /profiles/new
   def new
     @action = "create"
@@ -40,7 +41,6 @@ class ProfilesController < ApplicationController
     # @profile = user.profile.build(profile_params)
     @profile = Profile.new(profile_params)
     @profile.user_id = user.id
-
 
     respond_to do |format|
       if @profile.save
@@ -86,6 +86,6 @@ class ProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:name, :nick_name, :age, :height, :weight, :add1, 
-       :add2, :city, :state, :post_code, :birthday, :image_url, :id)
+       :add2, :city, :state, :post_code, :birthday, :photo)
     end
 end

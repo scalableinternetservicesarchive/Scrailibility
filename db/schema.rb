@@ -11,24 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024221459) do
+ActiveRecord::Schema.define(version: 20151025213825) do
 
   create_table "profiles", force: :cascade do |t|
     t.string   "name"
     t.string   "nick_name"
-    t.decimal  "age",        precision: 4
-    t.decimal  "height",     precision: 4
-    t.decimal  "weight",     precision: 4
+    t.decimal  "age",                precision: 4
+    t.decimal  "height",             precision: 4
+    t.decimal  "weight",             precision: 4
     t.string   "add1"
     t.string   "add2"
     t.string   "city"
     t.string   "state"
     t.string   "post_code"
     t.datetime "birthday"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "image_url"
     t.string   "user_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
