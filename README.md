@@ -1,5 +1,7 @@
 #Scrailability
+
 Project Description: This web application provides a social platform where people can potentially find their gym partners. We will collect rigistered members' information such as age, height, weight, schedule, location, preference, etc, and orginzation it into data layer. At the back end, we run a matching alogrithm that matches memebers together who share high compability. Eventually, we recommend the matching result to users. Moreover, based on users feedbak by marking as unlike or like, we will adjust our parameters in our matching alogrithm to find more personalized matching. 
+
 ##Team Members
 - Soomin Jeong
   ![Soomin Jeong](https://scontent-sjc2-1.xx.fbcdn.net/hprofile-xap1/v/t1.0-1/p160x160/10388635_10203705939316343_6753214294767401392_n.jpg?oh=89ebd2f3a466aefe3763f390dfa7de40&oe=568E3790)
@@ -8,7 +10,25 @@ Project Description: This web application provides a social platform where peopl
 - Tom Tang
   ![Tom Tang](https://scontent-sjc2-1.xx.fbcdn.net/hprofile-xaf1/v/t1.0-1/p160x160/11987032_836059213176269_7713877708687893657_n.jpg?oh=f14282424bbd08000140156e5bf7dee7&oe=56997B27)
 - Calvin Chan
-  ![Calvin
-  Chan](https://scontent-sjc2-1.xx.fbcdn.net/hprofile-xpt1/v/t1.0-1/p160x160/11667336_10207003459829585_9033733495530844598_n.jpg?oh=6d728d7722c7f45b44285bdc842f1cf4&oe=5690E5DD)
-# css
-# css
+  ![Calvin Chan](https://scontent-sjc2-1.xx.fbcdn.net/hprofile-xpt1/v/t1.0-1/p160x160/11667336_10207003459829585_9033733495530844598_n.jpg?oh=6d728d7722c7f45b44285bdc842f1cf4&oe=5690E5DD)
+
+## MySQL Setup
+
+1) Make sure MySQL is installed.
+    a) `brew install mysql`
+    b) `apt-get install mysql`
+    c) ...
+2) Ensure that the Mysql daemon is running
+    a) `[sudo] mysqld`
+    b) (IF ON MAC) note the socket that mysqld is running on
+        i) It should say something like `Version: '5.6.24'  socket:
+        '/tmp/mysql.sock'  port: 3306  Homebrew`
+    c) Test by trying to connect via mysql shell `mysql -u root`
+3) Open `/config/database.yml` and edit settings
+    a) Change the socket to what is noted in 2.b.i
+    b) If you want to run on another user other than `root`, change the username
+        i) If the alternate user has a password, you will need to add that as
+        well
+        ii) `password: **your user password here**`
+4) `rake db:create`
+5) `rake db:schema:load`
