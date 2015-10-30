@@ -9,7 +9,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body class= '<%= controller.controller_name %>'>
-	<%= render 'layouts/nav' %>
+	<% if controller.controller_name != "profiles" %>
+		<%= render 'layouts/nav' %>
+	<% end %>
 	<% if controller.controller_name == "discoveries" %>
 	<div id="columns">
 		<div id="side">
