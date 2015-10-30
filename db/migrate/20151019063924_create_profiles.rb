@@ -4,16 +4,19 @@ class CreateProfiles < ActiveRecord::Migration
     create_table :profiles do |t|
       t.string :name
       t.string :nick_name
-      t.decimal :age, precision:4 
+      t.decimal :age, precision:4
       t.decimal :height, precision:4
       t.decimal :weight, precision:4
       t.string :add1
       t.string :add2
       t.string :city
       t.string :state
-      t.string :post_code
+      t.string :country
+      t.int :post_code
+      t.decimal :latiutde
+      t.decimal :longitude
       t.datetime :birthday
-      
+
       t.timestamps null: false
     end
   end
