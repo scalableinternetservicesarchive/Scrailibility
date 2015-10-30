@@ -18,7 +18,7 @@ class Discoveries < ActiveRecord::Base
     * COS(RADIANS(?))
     * COS(RADIANS(longitude) - RADIANS(?))
     + SIN(RADIANS(latitude))
-    * SIN(RADIANS(center_lat))))) < ?", loc['latitude'], loc['longitude'], radius)
+    * SIN(RADIANS(?))))) < ?", loc['latitude'], loc['longitude'], loc['latitude'], radius)
     return distance
   end
 end

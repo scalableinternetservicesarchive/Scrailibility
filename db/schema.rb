@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20151025213825) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.decimal  "longitude",          precision: 4
+    t.decimal  "latitude",           precision: 4
   end
 
   create_table "users", force: :cascade do |t|
