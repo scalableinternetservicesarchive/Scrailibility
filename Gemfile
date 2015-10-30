@@ -24,9 +24,16 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+#use devise to implement sign_up and sign_in
 gem 'devise'
 
-#user paperclip to support user upload image"
+#use faye to support publish_subscribe
+gem 'private_pub'
+
+#use thin server to serve faye
+gem 'thin'
+
+#use paperclip to support user upload image"
 gem "paperclip", "~> 4.3"
 
 # Use ActiveModel has_secure_password

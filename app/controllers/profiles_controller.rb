@@ -38,9 +38,9 @@ class ProfilesController < ApplicationController
     #   redirect_to("http://yahoo.com")
     #   return
     # end
-    # @profile = user.profile.build(profile_params)
-    @profile = Profile.new(profile_params)
-    @profile.user_id = user.id
+    @profile = user.profiles.build(profile_params)
+    # @profile = Profile.new(profile_params)
+    # @profile.user_id = user.id
 
     respond_to do |format|
       if @profile.save

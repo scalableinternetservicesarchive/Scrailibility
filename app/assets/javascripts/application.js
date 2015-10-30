@@ -16,3 +16,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+//= require private_pub
+//= require chat
+//= require private_pub

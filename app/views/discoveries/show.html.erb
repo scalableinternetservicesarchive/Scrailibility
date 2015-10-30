@@ -3,9 +3,7 @@
 <h1>Find who is here</h1>
 
 <% @people.each do |profile| %>
-	<div class="entry">
-	<a href= <%= profile_path(profile.id)%> >
-	<%= image_tag profile.photo.url(:thumb)%>
-	</a>
+	<div>
+	<%= link_to image_tag(profile.photo.url(:thumb)), profile_path(profile.id) %>
 	</div>
 <% end %>

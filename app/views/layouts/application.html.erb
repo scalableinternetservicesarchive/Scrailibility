@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
   <title>Scrailibility</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class= '<%= controller.controller_name %>'>
+	<%= render 'layouts/nav' %>
 	<% if controller.controller_name == "discoveries" %>
-<!-- 	<div id="banner">
-		<%= image_tag("banner.png") %>
-	</div>
- -->	<div id="columns">
+	<div id="columns">
 		<div id="side">
 			<ul>
 				<li><a href= <%= edit_profile_path(current_user.id)%>>profile</a></li>

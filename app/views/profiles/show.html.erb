@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 <table>
-	<tr>
-		<td>name: <%= @profile.name%></td>
-	</tr>
+  	<tr>
+      <td><%= @profile.name %></td>
+  	</tr>
 	<tr>
 		<td><%= image_tag @profile.photo.url(:medium)%></td>
 	</tr>
+	<tr>
+	    <td>
+        	<%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                    "data-sid" => current_user.id, "data-rip" => @profile.user_id %>
+      	</td>
+     </tr>
 </table>
 <%= link_to 'Back', discovery_path %>
