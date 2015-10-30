@@ -14,21 +14,21 @@ Project Description: This web application provides a social platform where peopl
 
 ## MySQL Setup
 
-1) Make sure MySQL is installed.
-    a) `brew install mysql`
-    b) `apt-get install mysql`
-    c) ...
-2) Ensure that the Mysql daemon is running
-    a) `[sudo] mysqld`
-    b) (IF ON MAC) note the socket that mysqld is running on
-        i) It should say something like `Version: '5.6.24'  socket:
-        '/tmp/mysql.sock'  port: 3306  Homebrew`
-    c) Test by trying to connect via mysql shell `mysql -u root`
-3) Open `/config/database.yml` and edit settings
-    a) Change the socket to what is noted in 2.b.i
-    b) If you want to run on another user other than `root`, change the username
-        i) If the alternate user has a password, you will need to add that as
-        well
-        ii) `password: **your user password here**`
-4) `rake db:create`
-5) `rake db:schema:load`
+1. Make sure MySQL is installed.
+  * `brew install mysql`
+  * `apt-get install mysql`
+  * ...
+2. Ensure that the Mysql daemon is running
+  * `[sudo] mysqld`
+  * (IF ON MAC) note the socket that mysqld is running on
+    1. It should say something like `Version: '5.6.24'  socket:
+      '/tmp/mysql.sock'  port: 3306  Homebrew`
+  * Test by trying to connect via mysql shell `mysql -u root`
+3. Open `/config/database.yml` and edit settings
+  * Change the socket to what is noted in 2.b.i
+  * If you want to run on another user other than `root`, change the username
+    1. If the alternate user has a password, you will need to add that as
+      well
+    2. `password: **your user password here**`
+4. `rake db:create`
+5. `rake db:schema:load`
