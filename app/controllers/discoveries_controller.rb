@@ -8,6 +8,9 @@ class DiscoveriesController < ApplicationController
   			return
   		end
   		@people = Profile.all
+
+      	#@people = Discoveries.instance.findNearbyUsers(current_user.id, 500)
+
   	end
 
 end
