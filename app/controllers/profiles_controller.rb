@@ -17,6 +17,10 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
+    if user_signed_in? && !current_user.profiles.first.nil?
+      redirect_to root_path
+      return
+    end
     @action = "create"
     @profile = Profile.new
   end

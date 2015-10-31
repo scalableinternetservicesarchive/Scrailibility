@@ -12,7 +12,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :country
-      t.int :post_code
+      t.integer :post_code
       t.decimal :latiutde
       t.decimal :longitude
       t.datetime :birthday
