@@ -1,16 +1,41 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    
+   
+    <title>edit</title>
+
+    
+
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'> 
+
+    
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 <p id="notice"><%= notice %></p>
-<table>
-  	<tr>
-      <td><%= @profile.name %></td>
-  	</tr>
-	<tr>
-		<td><%= image_tag @profile.photo.url(:medium)%></td>
-	</tr>
-	<tr>
-	    <td>
-        	<%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                    "data-sid" => current_user.id, "data-rip" => @profile.user_id %>
-      	</td>
-     </tr>
-</table>
+
+      <h2><%= @profile.name %></h2>
+  	
+    <div class="container">
+<div class="row">
+  <div class="col-lg-4 col-md-4"></div>
+  <div class="col-lg-4 col-md-4"><%= image_tag @profile.photo.url(:medium), class:"center-block img-thumbnail img-responsive"%></div>
+  <div class="col-lg-4 col-md-4"></div>
+</div>
+
+		
+	
+        	<div class="text-center"><%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                    "data-sid" => current_user.id, "data-rip" => @profile.user_id %></div>
+
+<div class="render">
 <%= link_to 'Back', discovery_path %>
+
+</div>
+</body>
+

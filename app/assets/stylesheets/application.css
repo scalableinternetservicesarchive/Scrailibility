@@ -33,6 +33,14 @@ margin-top: 9px;
 margin-left: 15px;}
 */
 
+.table-show
+{
+     padding-top: 25px;
+   /* padding-right: 500px;*/
+    
+    padding-left: 550px;
+}
+
 
 .navbar-toggle{width:50px;height:50px;}
 

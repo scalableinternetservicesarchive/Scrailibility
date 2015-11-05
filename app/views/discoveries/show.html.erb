@@ -40,10 +40,11 @@
                             <div class="text-center">
                             <h5><%=profile.name%></h5>
                           <a href= <%= profile_path(profile.id)%> >
-                          <%= image_tag profile.photo.url(:thumb)%>
+                          <%= image_tag profile.photo.url(:thumb),class:"img-thumbnail img-responsive"%>
                            </a>
                          </div>
                      </div>
+                  
                          <% end %>
                          </div>
                     </div>
