@@ -3,7 +3,7 @@ class DiscoveriesController < ApplicationController
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user
   	def show
-  		if current_user.profiles.first.nil?
+  		if current_user.profile.nil?
   			redirect_to new_profile_path
   			return
   		end
