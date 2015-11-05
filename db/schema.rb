@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105093953) do
+ActiveRecord::Schema.define(version: 20151105100849) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id",    limit: 4
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 20151105093953) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_timeslots", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "timeslot_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "user_timeslots", ["timeslot_id"], name: "fk_rails_1104225855", using: :btree
+  add_index "user_timeslots", ["user_id"], name: "fk_rails_9dcc964397", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -85,4 +95,6 @@ ActiveRecord::Schema.define(version: 20151105093953) do
 
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "user_timeslots", "timeslots"
+  add_foreign_key "user_timeslots", "users"
 end
