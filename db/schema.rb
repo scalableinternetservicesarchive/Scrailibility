@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20151105022100) do
     t.string   "state",              limit: 255
     t.string   "country",            limit: 255
     t.integer  "post_code",          limit: 4
-    t.decimal  "latiutde",                       precision: 10
-    t.decimal  "longitude",                      precision: 10
+    t.float    "latiutde",                       precision: 10
+    t.float    "longitude",                      precision: 10
     t.datetime "birthday"
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false

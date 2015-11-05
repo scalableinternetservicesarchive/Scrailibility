@@ -212,6 +212,7 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
+    geocoder (1.2.12)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     http_parser.rb (0.6.0)
@@ -336,6 +337,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   fog
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   mysql
