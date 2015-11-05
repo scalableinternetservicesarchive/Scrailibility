@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029173525) do
+ActiveRecord::Schema.define(version: 20151105093953) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id",    limit: 4
@@ -49,13 +49,20 @@ ActiveRecord::Schema.define(version: 20151029173525) do
     t.decimal  "latitude",                       precision: 10
     t.decimal  "longitude",                      precision: 10
     t.datetime "birthday"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "image_url",          limit: 255
     t.integer  "user_id",            limit: 4
     t.string   "photo_file_name",    limit: 255
     t.string   "photo_content_type", limit: 255
     t.integer  "photo_file_size",    limit: 4
     t.datetime "photo_updated_at"
+  end
+
+  create_table "timeslots", force: :cascade do |t|
+    t.time     "begintime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
