@@ -13,7 +13,6 @@ default: &default
   timeout: 5000
   user: root
   socket: /tmp/mysql.sock
-  password:  lyn  
 
 development:
   <<: *default
