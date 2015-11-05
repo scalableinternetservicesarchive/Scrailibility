@@ -14,15 +14,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-  def settings
-    if user_signed_in? && !current_user.profile.nil?
-        redirect_to root_path
-        return
-    end
-    @profile = current_user.profile
-  end
-
-
   # GET /profiles/new
   def new
     if user_signed_in? && !current_user.profile.nil?
@@ -35,6 +26,10 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    if !user_signed_in? && current_user.profile.nil?
+      redirect_to root_path
+      return
+    end
     @action = "update"
   end
 
@@ -88,6 +83,17 @@ class ProfilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /profiles/
+  def settings
+    if user_signed_in? && !current_user.profile.nil?
+        redirect_to root_path
+        return
+    end
+    @profile = current_user.profile
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
