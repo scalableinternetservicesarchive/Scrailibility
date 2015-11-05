@@ -14,10 +14,18 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def settings
+    if user_signed_in? && !current_user.profile.nil?
+        redirect_to root_path
+        return
+    end
+    @profile = current_user.profile
+  end
+
 
   # GET /profiles/new
   def new
-    if user_signed_in? && !current_user.profiles.first.nil?
+    if user_signed_in? && !current_user.profile.nil?
       redirect_to root_path
       return
     end
@@ -42,7 +50,7 @@ class ProfilesController < ApplicationController
     #   redirect_to("http://yahoo.com")
     #   return
     # end
-    @profile = user.profiles.build(profile_params)
+    @profile = user.profile.build(profile_params)
     # @profile = Profile.new(profile_params)
     # @profile.user_id = user.id
 
