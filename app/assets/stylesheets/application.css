@@ -22,16 +22,6 @@ padding: 5px 10px;}
 
 
 
-/*hr {max-width:106px;border-top: 1px solid #3893d0;}
-button{border: 1px solid #3893d0;
-color: #3893d0;
-border-radius: 50%;
-background-color: transparent;
-height: 25px;
-width: 25px;
-margin-top: 9px;
-margin-left: 15px;}
-*/
 
 .table-show
 {
@@ -64,14 +54,7 @@ body {
      background-color: #030304;
 }
 
-/*h2
-{
-    margin: 0 0 35px;
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-}*/
+
 #edit-section {
     width: 100%;
     padding: 100px 0;
@@ -202,43 +185,7 @@ p{
 
 
 
-/*mg.map:hover {opacity:0.8;}
 
-#about h2{font-family: 'Orbitron', sans-serif; font-size:16px;letter-spacing:0.1em;color:#3893d0;text-align: left;
-margin-top: 10px;margin-bottom: 15px;}
-
-#contact {background-color:rgba(0,0,0,.7); }
-#contact h2{font-family: 'Orbitron', sans-serif; font-size:12px;letter-spacing:0.1em;color:#fff;text-align: left;
-margin-top: 100px;margin-bottom: 35px;}
-
-.S-task, .L-task {margin-top:20px;}
-
-
-.S-task p{text-align:right;}
-.L-task p{text-align:left;}
-.L-border {border-right:1px solid #3893d0;padding-right:20px;}
-.L-border img {margin-left:20px;display:block;float:right;}
-.R-border img {margin-right:20px;display:block;float:left;}
-.R-border {border-left:1px solid #3893d0;padding-left:20px;}
-
-#about p{text-align:left;}
-.text-danger {
-color: #e63822;
-text-transform: uppercase;
-font-size: 12px;
-letter-spacing: 0.1em;
-}
-
-@media(min-width:767px) {
-    p {
-        margin: 0 0 35px;
-       font-size: 16px;
-	line-height: 1.4;
-    }
-	
-	.char{width:419px;height:502px;}
-}
-*/
 a {
     color: #428bca;
    /* -webkit-transition: all .2s ease-in-out;
@@ -377,177 +324,14 @@ text-align: left; margin-top: 0px;
     }
 
 
-/*@media (min-width:768px) and(max-width:992px) {
-.map-title{font-family: 'Orbitron', sans-serif;
-font-size: 26px;
-letter-spacing: 0.1em;
-color: #fff;
-text-align: center;position:absolute;top:253px;left:23%;}
 
-}
-
-@media(min-width:767px) and  (max-width:991px){
-  
-	
-	.map-title{font-family: 'Orbitron', sans-serif;
-font-size: 16px;
-letter-spacing: 0.1em;
-color: #fff;
-text-align: center;position:absolute;top:39%;left:34%;}
-
-}
-
-.scene {
-  max-width: 220px;
-  margin: 0 auto;
-  padding: 0;
-  margin-top:150px;
-  
-   margin-bottom:70px;
-}
-
-.layer:nth-child(1) {
-  opacity: 0.35;
-}
-.layer:nth-child(2) {
-  opacity: 0.95;
-}
-
-
-
-.intro-body {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.brand-heading {
-    font-size: 40px;
-}
-
-.intro-text {
-    font-size: 18px;
-}
-
-@media(min-width:767px) {
-	.char img{margin-top: 70px;margin-left: -45px;}
-    .intro {
-        height: 100%;
-        padding: 0;
-    }
-	
-	.btn-huge {
-    padding: 25px;
-    font-size: 26px;
-	border:1px solid;
-	letter-spacing:0.1em;
-	font-family: 'Orbitron', sans-serif;
-}
-
-    .brand-heading {
-        font-size: 100px;
-    }
-
-    .intro-text {
-        font-size: 16px;
-		margin-top: 20px;
-    }
-}
-
-.btn-circle {
-    width: 70px;
-    height: 70px;
-    margin-top: 15px;
-    padding: 7px 16px;
-    border: 1px solid #3893d0;
-    border-radius: 35px;
-    font-size: 40px;
-    color: #3893d0;
-    background: 0 0;
-    -webkit-transition: background .3s ease-in-out;
-    -moz-transition: background .3s ease-in-out;
-    transition: background .3s ease-in-out;
-}
-
-
-
-
-
-.btn-circle:hover,
-.btn-circle:focus {
-    outline: 0;
-    color: #fff;
-   
-}
-
-.page-scroll .btn-circle i.animated {
-    -webkit-transition-property: -webkit-transform;
-    -webkit-transition-duration: 1s;
-    -moz-transition-property: -moz-transform;
-    -moz-transition-duration: 1s;
-}
-
-.page-scroll .btn-circle:hover i.animated {
-    -webkit-animation-name: pulse;
-    -moz-animation-name: pulse;
-    -webkit-animation-duration: 1.5s;
-    -moz-animation-duration: 1.5s;
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;
-}
-
-
-
-
-
-.content-section {
-    padding-top: 100px;
-}
-
-.download-section {
-    width: 100%;
-    padding: 10px 0;
-    color: #fff;
-}
-
-.char{
-	
-	margin: 0 auto;
-	position:relative;
-	margin-bottom:50px;
-	}
-	
-.char .avatar{position:absolute;right:0;position: absolute;
-right: 1px;
-top: -54px;
--webkit-border-radius: 50px;
-border-radius: 50px;}
-	
-
-.char a:hover{background-color:transparent;}
-/*
-.float {
-  display: inline-block;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  -webkit-transition-property: -webkit-transform;
-  transition-property: transform;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  
-}*/
 
 .char ul{ list-style:none;margin:0 auto;
 }
 
 .char li{display:inline-block;margin-right:10px;font-family: 'Orbitron', sans-serif; font-size:10px;letter-spacing:0.1em; text-transform:uppercase; background-color:rgba(0,0,0,.7);padding:5px 10px;border:1px solid #3893d0;margin-bottom: 9px;}
 
-.download-section h2{ font-family: 'Orbitron', sans-serif;
-font-size: 16px;
-letter-spacing: 0.1em;
-margin-bottom: 10px;}
+
 @-webkit-keyframes pulse {    
     0 {
         -webkit-transform: scale(1);
@@ -582,15 +366,7 @@ margin-bottom: 10px;}
     }
 }
 
-/*.float:hover {
-  -webkit-transform: translateY(-65px);
-  -ms-transform: translateY(-65px);
-  transform: translateY(-65px);
-  opacity:0.7;
-}*/
-.skill{
-margin: 0 auto;
-}
+
 
 
 @keyframes fadein {
@@ -657,37 +433,6 @@ border-radius: 50px;}
 
 
 
-.banner-social-buttons {
-    margin-top: 0;
-	float: left;
-}
-
-/*@media(max-width:1199px) {
-    ul.banner-social-buttons {
-        margin-top: 15px;
-    }
-}
-
-@media(max-width:767px) {
-    ul.banner-social-buttons>li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.banner-social-buttons>li:last-child {
-        margin-bottom: 0;
-    }
-	.char .avatar {display:none;}
-	#cloud3 {display:none;}
-}
-
-
-
-body {
-    webkit-tap-highlight-color: rgba(255,255,255,.2);
-}
-*/
 
 
 a.navbar-brand:hover{color:#fff;}
