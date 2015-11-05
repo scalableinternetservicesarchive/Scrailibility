@@ -1,4 +1,23 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    
+   
+    <title>Signup</title>
+
+    
+
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'> 
+
+    
+<body>
 <h2>Sign up</h2>
+<div class="signup">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -20,10 +39,13 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+  <br>
+  <%= f.submit "Sign Up", class: "btn btn-default" %>
 <% end %>
-
+<br>
+<div class="render">
 <%= render "User/shared/links" %>
+</div>
+
+</div>
+</body>
