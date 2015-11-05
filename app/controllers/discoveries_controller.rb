@@ -7,7 +7,17 @@ class DiscoveriesController < ApplicationController
   			redirect_to new_profile_path
   			return
   		end
-  		@people = Profile.all
+
+        timeslots = current_user.timeslots
+        @people = Hash.new
+        @people.default = nil
+        for timeslot in timeslots
+            for user in timeslot.users
+                if (!@people[user.id] and user.id != current_user.id)
+                    @people[user.id] = user
+                end
+            end
+        end
 
       	#@people = Discoveries.instance.findNearbyUsers(current_user.id, 500)
 
