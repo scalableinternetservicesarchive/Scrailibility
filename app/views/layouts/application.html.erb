@@ -2,16 +2,18 @@
 <html>
 <head>
   <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
-  <title>Scrailibility</title>
+  <title >Spot Me</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' %>
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
+
   <%= csrf_meta_tags %>
 </head>
-<body class= '<%= controller.controller_name %>'>
-	<% if controller.controller_name != "profiles" %>
-		<%= render 'layouts/nav' %>
-	<% end %>
+<body class= "<%= controller.controller_name %>" style="padding-top: 70px;">
+    <%= render 'layouts/nav' %>
 	<% if controller.controller_name == "discoveries" %>
 	<div id="columns">
 		<div id="side">
@@ -21,10 +23,10 @@
 				 <li><a href="http://www..../news">find a gym</a></li> 
 			</ul> 
 		</div>
-		<% end %>
-		<div id="main">
-			<%= yield %>
-  		</div>
   	</div>
+    <% end %>
+    <div id="main" class="container">
+        <%= yield %>
+    </div>
 </body>
 </html>
