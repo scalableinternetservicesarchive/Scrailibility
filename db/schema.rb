@@ -44,18 +44,18 @@ ActiveRecord::Schema.define(version: 20151029173525) do
     t.string   "add2",               limit: 255
     t.string   "city",               limit: 255
     t.string   "state",              limit: 255
-    t.string   "country",            limit: 255
-    t.integer  "post_code",          limit: 4
-    t.decimal  "latiutde",                       precision: 10
-    t.decimal  "longitude",                      precision: 10
+    t.string   "post_code",          limit: 255
     t.datetime "birthday"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.integer  "user_id",            limit: 4
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "image_url",          limit: 255
+    t.string   "user_id",            limit: 255
     t.string   "photo_file_name",    limit: 255
     t.string   "photo_content_type", limit: 255
     t.integer  "photo_file_size",    limit: 4
     t.datetime "photo_updated_at"
+    t.decimal  "longitude",                      precision: 4
+    t.decimal  "latitude",                       precision: 4
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,6 +76,4 @@ ActiveRecord::Schema.define(version: 20151029173525) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
 end

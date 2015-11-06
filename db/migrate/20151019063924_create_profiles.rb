@@ -13,8 +13,8 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :state
       t.string :country
       t.integer :post_code
-      t.decimal :latiutde
-      t.decimal :longitude
+      t.float :latiutde
+      t.float :longitude
       t.datetime :birthday
 
       t.timestamps null: false

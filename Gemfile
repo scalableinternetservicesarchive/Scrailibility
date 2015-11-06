@@ -62,4 +62,4 @@ end
 
 gem 'aws-sdk'
 gem 'fog'
-
+gem 'geocoder'
