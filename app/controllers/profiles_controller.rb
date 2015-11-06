@@ -31,6 +31,11 @@ class ProfilesController < ApplicationController
       return
     end
     @action = "update"
+    @timeslots = Hash.new
+    @timeslots.default = nil
+    for i in current_user.timeslots
+        @timeslots[i.id] = true
+    end
   end
 
   # POST /profiles
@@ -64,6 +69,20 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
     respond_to do |format|
+      user_timeslots = params[:time]
+      if (user_timeslots == nil)
+          user_timeslots = Hash.new
+      end
+      user_timeslots.default = nil
+
+      for timeslot in Timeslot.all
+        if (current_user.timeslots.exists?(timeslot.id) and !user_timeslots[timeslot.id.to_s])
+          current_user.timeslots.delete(timeslot.id)
+        elsif (user_timeslots[timeslot.id.to_s] and !current_user.timeslots.exists?(timeslot.id))
+          current_user.timeslots << timeslot
+        end
+      end
+
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }

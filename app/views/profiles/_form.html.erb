@@ -12,6 +12,14 @@
   <% end %>
 <div id="edit-section">
 <div class="container">
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <% Timeslot.all.each do |timeslot| %>
+            <%= check_box_tag "time[#{timeslot.id}]", timeslot.id, @timeslots[timeslot.id]%>
+            <%= f.label timeslot.begintime.strftime("%I:%M %p") %>
+        <% end %>
+    </div>
+</div>
   <div class="row">
      <div class="col-lg-6 col-md-6">
   <div class="field">
