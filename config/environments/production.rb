@@ -76,9 +76,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  
-  # Paperclip config:
-  Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  # # Paperclip config:
+  # Paperclip.options[:command_path] = "/usr/local/bin/"
 
   #Paperclip deploy on AWS config
   config.paperclip_defaults = {

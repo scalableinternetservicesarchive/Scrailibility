@@ -34,7 +34,9 @@ gem 'private_pub'
 gem 'thin'
 
 #use paperclip to support user upload image"
-gem "paperclip", "~> 4.3"
+gem "paperclip"
+gem 'aws-sdk'
+gem 'fog'
 
 gem 'acts_as_singleton'
 
@@ -59,7 +61,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
-gem 'aws-sdk'
-gem 'fog'
-
