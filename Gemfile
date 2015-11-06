@@ -62,7 +62,4 @@ group :development do
   gem 'spring'
 end
 
-gem 'aws-sdk'
-gem 'fog'
-
 gem 'geocoder'

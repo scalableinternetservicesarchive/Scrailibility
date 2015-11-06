@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class= '<%= controller.controller_name %>'>
-	<% if user_signed_in? && current_user.profiles.first %>
+	<% if user_signed_in? && current_user.profile %>
 		<%= render 'layouts/nav' %>
 	<% end %>
 <!-- 	<% if user_signed_in? %>
