@@ -10,15 +10,26 @@
       </ul>
     </div>
   <% end %>
-
-
+<div id="edit-section">
+<div class="container">
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <% Timeslot.all.each do |timeslot| %>
+            <%= check_box_tag "time[#{timeslot.id}]", timeslot.id, @timeslots[timeslot.id]%>
+            <%= f.label timeslot.begintime.strftime("%I:%M %p") %>
+        <% end %>
+    </div>
+</div>
+  <div class="row">
+     <div class="col-lg-6 col-md-6">
   <div class="field">
-      <%= f.label :name %><br />
+      <%= f.label :name %><br/>
       <%= f.text_field :name %><br/>
-      <%= f.label :nick_name %><br />
+        </div>
+      <div class="field">
+      <%= f.label :nickname %><br />
       <%= f.text_field :nick_name %>
-      
-      <%= label_tag :name, 'Name:' %>
+     
   </div>
 
   <div class="field">
@@ -33,15 +44,25 @@
 
 
   <div class="field">
-      <%= f.label :add1 %><br />
+      <%= f.label :address1 %><br />
       <%= f.text_field :add1 %><br/>
-      <%= f.label :add2 %><br />
+      </div>
+      <div class="field">
+      <%= f.label :address2 %><br />
       <%= f.text_field :add2 %><br/>
+      </div>
+    </div>
+ <div class="col-lg-6 col-md-6">
+      <div class="field">
       <%= f.label :city %><br />
       <%= f.text_field :city %><br/>
+      </div>
+      <div class="field">
       <%= f.label :state %><br />
       <%= f.text_field :state %><br/>
-      <%= f.label :post_code %><br />
+      </div>
+      <div class="field">
+      <%= f.label :postcode %><br />
       <%= f.text_field :post_code %><br/>     
   </div>
 
@@ -49,7 +70,9 @@
     <%= f.label :upload_image %><br>
     <%= f.file_field :photo%>
 </div>
-<table style="width:100%">
+
+ <div class="field">
+<table style="width:50%">
   <tr>
     <td>Month</td>
     <td>Day</td> 
@@ -57,6 +80,7 @@
   </tr>
   <tr>
     <td>
+
       <select name="month">
         <option value="volvo">Volvo</option>
         <option value="saab">Saab</option>
@@ -64,7 +88,7 @@
         <option value="audi">Audi</option>
       </select>
     </td>
-
+     
     <td>
       <select name="day">
         <option value="volvo">Volvo</option>
@@ -73,7 +97,7 @@
         <option value="audi">Audi</option>
       </select>
     </td> 
-
+     
     <td>
       <select name="year">
         <option value="volvo">Volvo</option>
@@ -84,10 +108,12 @@
     </td>
   </tr>
 </table>
-
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+   <%= f.submit "Create Profile", class: "btn btn-default" %>
+</div>
 <% end %>

@@ -1,5 +1,24 @@
-<h2>Log in</h2>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    
+   
+    <title>LOGIN</title>
+
+    
+
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'> 
+
+    
+<body>
+  
+<h2>Log in</h2>
+<div class="login">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -17,10 +36,13 @@
       <%= f.label :remember_me %>
     </div>
   <% end -%>
+  <br>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+  <%= f.submit "Log in", class: "btn btn-default" %>
 <% end %>
-
+<br>
+<div class="render">
 <%= render "devise/shared/links" %>
+</div>
+</div>
+</body>

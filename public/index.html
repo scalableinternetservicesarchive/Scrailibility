@@ -1,80 +1,796 @@
 <!DOCTYPE html>
-<html>
-<head >
-  <title >Spot Me</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <style>
-  .modal-header, h4, .close {
-      background-color: #5cb85c;
-      color:white !important;
-      text-align: center;
-      font-size: 30px;
-  }
-  .modal-footer {
-      background-color: #f9f9f9;
-  }
-  </style>
-</head>
-<body>
-	
-  <h1 class="jumbotron text-center">Spot Me</h1>
-  <h2 class="jumbotron text-center">Welcome to Spot Me, an app where you can find a new gym partner around you.</h2>
-  <a href="/users/sign_in"><button>Login</button></a>
-  <a href="/users/sign_up"><button>Signup</button></a>
 
 
-  <div class="container">
-  <h3>Modal Login Example</h3>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
 
-  <!-- Modal -->
+<html lang="en">
 
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+   
+   
+    <title>Spot Me - Find Your GYM Buddy!</title>
+
     
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header" style="padding:35px 50px;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'> 
+    <style>
+   
+
+
+
+
+hr {max-width:106px;border-top: 1px solid #3893d0;}
+button{border: 1px solid #3893d0;
+color: #3893d0;
+border-radius: 50%;
+background-color: transparent;
+height: 25px;
+width: 25px;
+margin-top: 9px;
+margin-left: 15px;}
+
+
+.navbar-toggle{width:50px;height:50px;}
+
+
+
+
+
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #fff;
+    background-image:url(back.jpg);
+    background-color: #030304;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 35px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+
+.navbar-nav{margin-top: 15px;font-family: 'Orbitron', sans-serif; font-size:14px;letter-spacing:0.1em;}
+
+
+
+
+p{font-family: 'Raleway', sans-serif;font-size:16px;margin-top:26px;}
+
+
+
+#about h2{font-family: 'Orbitron', sans-serif; font-size:16px;letter-spacing:0.1em;color:#3893d0;text-align: left;
+margin-top: 10px;margin-bottom: 15px;}
+
+#contact {background-color:rgba(0,0,0,.7); }
+#contact h2{font-family: 'Orbitron', sans-serif; font-size:12px;letter-spacing:0.1em;color:#fff;text-align: left;
+margin-top: 100px;margin-bottom: 35px;}
+
+
+
+
+
+
+#about p{text-align:left;}
+
+
+@media(min-width:767px) {
+    p {
+        margin: 0 0 35px;
+       font-size: 16px;
+  line-height: 1.4;
+    }
+  
+  .char{width:419px;height:502px;}
+}
+
+a {
+    color: #428bca;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    background-color: #428bca;
+  color:#020202;
+}
+
+.light {
+    font-weight: 400;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(56,147,208,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #000;
+}
+
+.navbar-brand {
+    font-weight: 400;
+}
+
+.navbar-brand:focus {
+    outline: 0;
+}
+
+.navbar-brand:hover {
+    background-color:transparent;
+  opacity:0.8;
+}
+
+.navbar-custom a {
+    color: #fff;
+}
+
+.navbar-custom .nav li a {
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li.active {
+    outline: 0;
+    background-color: rgba(255,255,255,.2);
+}
+
+.navbar-toggle {
+    padding: 10px 6px;
+    font-size: 30px;
+    color: #fff;
+}
+
+.navbar-toggle:focus,
+.navbar-toggle:active {
+    outline: 0;
+}
+
+
+@media(min-width:1200px) {
+.map-title{position:absolute;top:330px;font-family: 'Orbitron', sans-serif;
+font-size: 26px;
+letter-spacing: 0.1em;
+color: #fff;
+text-align: center; left:30%;
+}
+}
+@media(max-width:1199px) {
+.map-title{font-family: 'Orbitron', sans-serif;
+font-size: 26px;
+letter-spacing: 0.1em;
+color: #fff;
+text-align: center;position:absolute;top:300px;left:29%;}
+
+}
+
+@media(max-width:767px) {
+.map-title{font-family: 'Orbitron', sans-serif;
+font-size: 16px;
+letter-spacing: 0.1em;
+color: #fff;
+text-align: center;position:absolute;top:10%;left:5%;}
+
+.download-section p{display:none;}
+
+/*.char{height:auto; background-image:none;border-bottom: 1px solid #3893d0;padding-bottom: 15px;}*/
+.skill{display:block;}
+/*
+.char img{margin:0 auto;margin-bottom: 20px;}*/
+
+#contact h2 {margin-top: 10px;}
+
+
+
+.btn-huge {
+    padding: 25px;
+    font-size: 16px;
+  border:1px solid;
+  letter-spacing:0.1em;
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+}
+
+ @media(min-width:767px){ .navbar {
+        padding: 20px 0;
+        border-bottom: 0;
+        letter-spacing: 1px;
+        background: 0 0;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+  
+    .top-nav-collapse {
+        padding: 0;
+        background-color: #000;
+    }
+
+    .navbar-custom.top-nav-collapse {
+        border-bottom: 1px solid rgba(56,147,208,.3);
+    }
+  }
+@media(min-width:767px) and  (max-width:991px){
+  
+  
+  .map-title{font-family: 'Orbitron', sans-serif;
+font-size: 16px;
+letter-spacing: 0.1em;
+color: #fff;
+text-align: center;position:absolute;top:39%;left:34%;}
+
+}
+
+.scene {
+  max-width: 220px;
+  margin: 0 auto;
+  padding: 0;
+  margin-top:150px;
+  
+   margin-bottom:70px;
+}
+
+.layer:nth-child(1) {
+  opacity: 0.35;
+}
+.layer:nth-child(2) {
+  opacity: 0.95;
+}
+
+.intro {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+   
+   
+}
+
+.intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.brand-heading {
+    font-size: 40px;
+}
+
+.intro-text {
+    font-size: 18px;
+}
+
+@media(min-width:767px) {
+  .char img{margin-top: 70px;margin-left: -45px;}
+    .intro {
+        height: 100%;
+        padding: 0;
+    }
+  
+  .btn-huge {
+    padding: 25px;
+    font-size: 26px;
+  border:1px solid;
+  letter-spacing:0.1em;
+  font-family: 'Orbitron', sans-serif;
+}
+
+    .brand-heading {
+        font-size: 100px;
+    }
+
+    .intro-text {
+        font-size: 16px;
+    margin-top: 20px;
+    }
+}
+
+.btn-circle {
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    padding: 7px 16px;
+    border: 1px solid #3893d0;
+    border-radius: 35px;
+    font-size: 40px;
+    color: #3893d0;
+    background: 0 0;
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+
+
+
+
+.btn-circle:hover,
+.btn-circle:focus {
+    outline: 0;
+    color: #fff;
+   
+}
+
+.page-scroll .btn-circle i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+}
+
+.page-scroll .btn-circle:hover i.animated {
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+}
+
+@-webkit-keyframes pulse {    
+    0 {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@-moz-keyframes pulse {    
+    0 {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -moz-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.content-section {
+    padding-top: 100px;
+}
+
+.download-section {
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;
+}
+
+
+  
+
+.char a:hover{background-color:transparent;}
+
+.float {
+  display: inline-block;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  
+}
+
+.char ul{ list-style:none;margin:0 auto;
+}
+
+.char li{display:inline-block;margin-right:10px;font-family: 'Orbitron', sans-serif; font-size:10px;letter-spacing:0.1em; text-transform:uppercase; background-color:rgba(0,0,0,.7);padding:5px 10px;border:1px solid #3893d0;margin-bottom: 9px;}
+
+.download-section h2{ font-family: 'Orbitron', sans-serif;
+font-size: 16px;
+letter-spacing: 0.1em;
+margin-bottom: 10px;}
+
+.float:hover {
+  -webkit-transform: translateY(-65px);
+  -ms-transform: translateY(-65px);
+  transform: translateY(-65px);
+  opacity:0.7;
+}
+.skill{
+margin: 0 auto;
+}
+
+.float:hover + div.skill{
+  display:block;
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+       -moz-animation: fadein 2s; /* Firefox */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera */
+            animation: fadein 2s;}
+      
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}â€‹
+
+/* Opera */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}â€‹
+
+
+
+@media(min-width:767px) {
+  .skill{position: absolute;
+left: -55px;
+bottom: 27px;
+width: 452px;}
+    .content-section {
+        padding-top: 109px;
+    }
+
+    .download-section {
+        padding: 10px 0;
+    }
+
+}
+  
+  .skill{display: none;}
+  
+}
+
+.btn {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  
+}
+
+.btn-default {
+    border: 1px solid #3893d0;
+    color: #3893d0;
+    background-color: transparent;
+}
+
+.btn-lg {
+padding: 10px 10px;
+font-size: 18px;
+line-height: 1.33;
+border-radius: 50px;}
+
+.btn-default:hover,
+.btn-default:focus {
+    border: 1px solid #3893d0;
+    outline: 0;
+    color: #000;
+    background-color: #3893d0;
+}
+
+
+
+
+::-moz-selection {
+    text-shadow: none;
+    background: #fcfcfc;
+    background: rgba(255,255,255,.2);
+}
+
+::selection {
+    text-shadow: none;
+    background: #fcfcfc;
+    background: rgba(255,255,255,.2);
+}
+
+img::selection {
+    background: 0 0;
+}
+
+img::-moz-selection {
+    background: 0 0;
+}
+
+body {
+    webkit-tap-highlight-color: rgba(255,255,255,.2);
+}
+
+
+.download-section h1, #contact h1,#theend h1{
+  font-family: 'Orbitron', sans-serif;
+font-size: 26px;
+letter-spacing: 0.1em;
+color: #3893d0;
+text-align: center;
+margin-top: 10px;
+margin-bottom: 15px;
+
+padding-bottom: 10px;
+}
+
+#theend h2{
+  font-family: 'Orbitron', sans-serif;
+font-size: 26px;
+letter-spacing: 0.1em;
+color: #fff;
+text-align: center;
+margin-top: 10px;
+margin-bottom: 15px;
+
+padding-bottom: 10px;
+}
+
+.download-section p{
+  
+font-size: 12px;
+font-style: italic;
+
+}
+#about{position:relative;}
+
+
+a.navbar-brand:hover{color:#fff;}
+
+#theend h3,#theend p{
+  
+font-size: 12px;
+font-style: italic;
+text-align: center;
+text-transform:none;
+font-weight:normal;
+margin-top: 50px;
+}
+    </style>
+    
+    
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                
+               
+            </div>
+          
+            
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    
+                    
+                      <li class="page-scroll">
+                        <a href="#why">WHY</a>
+                    </li>
+                      <li>
+                        <a href="#contact">CONTACT</a>
+                    </li>
+            
+                    <li>
+                        <a href="/users/sign_in"> SIGN IN</a>
+                    </li>
+                   
+                    <li>
+                        <a href="/users/sign_up">SIGN UP</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <div class="modal-body" style="padding:40px 50px;">
-          <form role="form">
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+        <!-- /.container -->
+    </nav>
+
+    <section class="intro">
+    
+        <div class="intro-body">
+            <div class="container text-center">
+                <div class="row">
+                   
+
+            <div class="col-md-8 col-md-offset-2">
+                            <ul id="scene" class="scene">
+            
+      
+      <img src="Logo.png" class="img-responsive")></img>
+  </div>
+        
+       <img src="Spotme.png">
+
+      
+                        <p class="intro-text">Go to the gym alone? <br> Need someone to cheer you up? <br> There are plenty of people sweating in the gym nearby. <br> Just SPOT me, find your gym buddy!</p>
+                        <div class="page-scroll">
+                            <a href="#about" class="btn btn-circle">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
-              <a href="/users/sign_in"><button type="submit" class="btn btn-success btn-block" ><span class="glyphicon glyphicon-off"></span> Login</button></a>
-          </form>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Not a member? <a href="#">Sign Up</a></p>
-          <p>Forgot <a href="#">Password?</a></p>
+    </section>
+
+   
+
+    
+
+     <section id="why" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+            <h1>Why do you need a gym partner?</h1>
+            <hr>
+            <p>It's a win win for everyone.</p>
+                <div class="col-lg-6 col-md-6">
+                    <h2>One Person</h2>
+                     <div class="char"><a  href="#" class="float"><img src="gym2.jpg" class="img-thumbnail"></a>
+                       <div class="skill">
+                    <ul>
+                    <li>Lack Motivation</li>
+                    <li>Easily Got Hurt</li>
+                    <li>Boring</li>
+                    <li>Lonely</li>
+                     <li>Less Ideas</li>
+                    </ul>
+                    </div>
+                     </div>
+                   
+                </div>
+                
+                    <div class="col-lg-6 col-md-6">
+                    <h2>Two Person</h2>
+                      <div class="char"><a  href="#" class="float"><img src="gym.jpg" class="img-thumbnail")></a>
+                       <div class="skill">
+                    <ul>
+                    <li>More Joy</li>
+                    <li>Keep Committed</li>
+                    <li>Motivated</li>
+                    <li>Make Friends</li>
+                     <li>Maximize the Gym Time</li>
+                    </ul>
+                    </div>
+                    
+                    </div>
+                    
+                    </div>
+                
+            </div>
+        </div>
+    </section>
+
+<section id="contact">
+    <div class="container-fluid bg-grey">
+  <h1>CONTACT</h1>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> California, US</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p> 
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
         </div>
       </div>
-      
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-10 form-group">
+
+        </div>
+      </div> 
     </div>
-  </div> 
+  </div>
 </div>
- 
-<script>
-$(document).ready(function(){
-    $("#myBtn").click(function(){
-        $("#myModal").modal();
-    });
-});
-</script>
+</section>
+    <section id="theend" class="container content-section text-center">
+    <div class="row">
+    <h2>Begin your fitness journey. <br> Right Now!</h2><hr>
+  
+   
+    <br><br><a href="/users/sign_up" class="btn-huge">FIND YOUR MATCH</a>
+   
+    <p>©  Scrailibility</p>
+    </div>
+    </section>
+
+    <!-- Core JavaScript Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+  
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/script.js"></script>
+        <script src="js/jquery.parallax.js"></script>
+  <script>
+
+  // Yep, that's it!
+  $('#scene').parallax();
+
+  </script>
+    
+    
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/demo1.js"></script>
+
 </body>
+
 </html>

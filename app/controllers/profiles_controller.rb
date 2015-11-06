@@ -14,20 +14,33 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-
   # GET /profiles/new
   def new
-    if user_signed_in? && !current_user.profiles.first.nil?
+    if user_signed_in? && !current_user.profile.nil?
       redirect_to root_path
       return
     end
     @action = "create"
     @profile = Profile.new
+    @timeslots = Hash.new
+    @timeslots.default = nil
+    for i in current_user.timeslots
+        @timeslots[i.id] = true
+    end
   end
 
   # GET /profiles/1/edit
   def edit
+    if !user_signed_in? && current_user.profile.nil?
+      redirect_to root_path
+      return
+    end
     @action = "update"
+    @timeslots = Hash.new
+    @timeslots.default = nil
+    for i in current_user.timeslots
+        @timeslots[i.id] = true
+    end
   end
 
   # POST /profiles
@@ -42,9 +55,23 @@ class ProfilesController < ApplicationController
     #   redirect_to("http://yahoo.com")
     #   return
     # end
-    @profile = user.profiles.build(profile_params)
-    # @profile = Profile.new(profile_params)
-    # @profile.user_id = user.id
+    # @profile = user.profile.build(profile_params)
+    @profile = Profile.new(profile_params)
+    @profile.user_id = user.id
+
+    user_timeslots = params[:time]
+    if (user_timeslots == nil)
+        user_timeslots = Hash.new
+    end
+    user_timeslots.default = nil
+
+    for timeslot in Timeslot.all
+      if (current_user.timeslots.exists?(timeslot.id) and !user_timeslots[timeslot.id.to_s])
+        current_user.timeslots.delete(timeslot.id)
+      elsif (user_timeslots[timeslot.id.to_s] and !current_user.timeslots.exists?(timeslot.id))
+        current_user.timeslots << timeslot
+      end
+    end
 
     respond_to do |format|
       if @profile.save
@@ -61,6 +88,20 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
     respond_to do |format|
+      user_timeslots = params[:time]
+      if (user_timeslots == nil)
+          user_timeslots = Hash.new
+      end
+      user_timeslots.default = nil
+
+      for timeslot in Timeslot.all
+        if (current_user.timeslots.exists?(timeslot.id) and !user_timeslots[timeslot.id.to_s])
+          current_user.timeslots.delete(timeslot.id)
+        elsif (user_timeslots[timeslot.id.to_s] and !current_user.timeslots.exists?(timeslot.id))
+          current_user.timeslots << timeslot
+        end
+      end
+
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
@@ -80,6 +121,17 @@ class ProfilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /profiles/
+  def settings
+    if user_signed_in? && !current_user.profile.nil?
+        redirect_to root_path
+        return
+    end
+    @profile = current_user.profile
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
