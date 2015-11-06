@@ -22,6 +22,11 @@ class ProfilesController < ApplicationController
     end
     @action = "create"
     @profile = Profile.new
+    @timeslots = Hash.new
+    @timeslots.default = nil
+    for i in current_user.timeslots
+        @timeslots[i.id] = true
+    end
   end
 
   # GET /profiles/1/edit
@@ -50,9 +55,9 @@ class ProfilesController < ApplicationController
     #   redirect_to("http://yahoo.com")
     #   return
     # end
-    @profile = user.profile.build(profile_params)
-    # @profile = Profile.new(profile_params)
-    # @profile.user_id = user.id
+    # @profile = user.profile.build(profile_params)
+    @profile = Profile.new(profile_params)
+    @profile.user_id = user.id
 
     respond_to do |format|
       if @profile.save
