@@ -331,7 +331,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_singleton
   autoprefixer-rails
-  aws-sdk (< 2.0)
+  aws-sdk (< 2.0.0)
   bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.1.0)

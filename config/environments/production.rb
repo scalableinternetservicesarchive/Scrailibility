@@ -80,7 +80,7 @@ Rails.application.configure do
   # # Paperclip config:
   # Paperclip.options[:command_path] = "/usr/local/bin/"
 
-  #Paperclip deploy on AWS config
+  Paperclip deploy on AWS config
   config.paperclip_defaults = {
       :storage => :fog,
       :fog_credentials => {
@@ -89,7 +89,7 @@ Rails.application.configure do
         :region => 'us-west-2'
       },
       :fog_directory => 'scalableinternetservices',
-      :path => 'Scrailibility/images/:class/:attachment/:id/:style/:filename',
-      :url => "/images/:class/:attachment/:id/:style/:filename"
+      :path => 'Scrailibility/profiles/images/:class/:attachment/:id/:style/:filename',
+      :url => "profiles/images/:class/:attachment/:id/:style/:filename"
     }
 end
