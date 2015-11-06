@@ -6,11 +6,6 @@ body {
   line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
 
 pre {
   background-color: #eee;
@@ -42,24 +37,26 @@ div {
 }
 
 .field_with_errors {
+  text-align: center;
   padding: 2px;
   background-color: red;
   display: table;
 }
 
 #error_explanation {
+  text-align: center;
   width: 450px;
   border: 2px solid red;
-  padding: 7px;
+  padding: 2px;
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
 
   h2 {
-    text-align: left;
+    text-align: center;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 12px;
+    font-size: 10px;
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;

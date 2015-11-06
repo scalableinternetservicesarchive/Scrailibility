@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+for i in 0..23
+    for j in 0..1
+        time = "#{i}:#{j*30}:00"
+        Timeslot.create(begintime: time)
+    end
+end

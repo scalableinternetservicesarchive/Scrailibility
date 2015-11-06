@@ -3,14 +3,24 @@ class DiscoveriesController < ApplicationController
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user
   	def show
-  		if current_user.profiles.first.nil?
+  		if current_user.profile.nil?
   			redirect_to new_profile_path
   			return
   		end
-  		#@people = Profile.all
-      Rails.logger.debug("User id: #{@current_user.id}")
-      @people = Discoveries.instance.findNearbyUsers(current_user.id, 20)
-      Rails.logger.debug("People are: #{@people}")
+
+      @people2 = Discoveries.instance.findNearbyUsers(current_user.id, 20)
+
+        timeslots = current_user.timeslots
+        @people = Hash.new
+        @people.default = nil
+        for timeslot in timeslots
+            for user in timeslot.users
+                if (!@people[user.id] and user.id != current_user.id)
+                    @people[user.id] = user.profile
+                end
+            end
+        end
+
   	end
 
 end
