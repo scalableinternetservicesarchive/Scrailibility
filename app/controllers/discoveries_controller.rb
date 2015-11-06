@@ -19,8 +19,7 @@ class DiscoveriesController < ApplicationController
             end
         end
 
-      	#@people = Discoveries.instance.findNearbyUsers(current_user.id, 500)
-
+      @people2 = Discoveries.instance.findNearbyUsers(current_user.id, 20)
   	end
 
 end
