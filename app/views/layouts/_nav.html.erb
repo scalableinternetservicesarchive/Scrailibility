@@ -14,11 +14,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.profiles.first %>
             <li>
               <%= link_to "My Profile", profile_path(current_user.profiles.first.id) %>
             </li>
-            <li><%= link_to "chats", "http://josephndungu.com/tutorials/gmail-like-chat-application-in-ruby-on-rails" %></li>
+            <li id="notification">
+              <%= link_to "chats", '/chats' %>
             <li>
               <%= link_to "Logout", destroy_user_session_path, method: :delete	  %>
             </li>

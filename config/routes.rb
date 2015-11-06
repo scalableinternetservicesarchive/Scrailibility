@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-
+  post 'conversations/read_messages', to: 'conversations#read_messages'
+  get 'conversations/check_new_messages', to: 'conversations#check_new_messages'
+  get 'chats', to: 'chats#index'
   resources :profiles
   resource :discovery
   devise_for :users, controllers: { registrations: "registrations" }
   resources :conversations do
     resources :messages
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -23,7 +23,12 @@ var ready = function () {
          */
 
         chatWith: function (conversation_id) {
-
+          $.ajax({
+              url: "/conversations/read_messages",
+              type: "POST",
+              data: {conversation_id: conversation_id},
+              cache: false,
+          });
             chatBox.createChatBox(conversation_id);
             $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
         },

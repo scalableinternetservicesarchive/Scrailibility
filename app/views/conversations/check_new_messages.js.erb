@@ -1,0 +1,7 @@
+<% if @unread_count > 0%>
+  var counter = '<%= @unread_count %>';
+  $("#notification").html("<a href='/chats'>have new messages</a> ");
+<% else %>
+  $("#notification").html("<a href='/chats'>chats</a> ");
+<% end %>
+Poller.poll()

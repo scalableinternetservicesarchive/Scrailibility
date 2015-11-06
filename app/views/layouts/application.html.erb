@@ -9,22 +9,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body class= '<%= controller.controller_name %>'>
-	<% if controller.controller_name != "profiles" %>
+	<% if user_signed_in? && current_user.profiles.first %>
 		<%= render 'layouts/nav' %>
 	<% end %>
-	<% if controller.controller_name == "discoveries" %>
+<!-- 	<% if user_signed_in? %>
 	<div id="columns">
 		<div id="side">
 			<ul>
 				<li><a href= <%= edit_profile_path(current_user.id)%>>profile</a></li>
 				<li><a href="http://www..../faq">suggested matches</a></li>
-				 <li><a href="http://www..../news">find a gym</a></li> 
-			</ul> 
+				 <li><a href="http://www..../news">find a gym</a></li>
+
+			</ul>
 		</div>
-		<% end %>
+	 </div>
+	<% end %> -->
 		<div id="main">
 			<%= yield %>
   		</div>
-  	</div>
 </body>
 </html>
