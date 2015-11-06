@@ -8,6 +8,8 @@ class DiscoveriesController < ApplicationController
   			return
   		end
 
+      @people2 = Discoveries.instance.findNearbyUsers(current_user.id, 20)
+
         timeslots = current_user.timeslots
         @people = Hash.new
         @people.default = nil
@@ -18,8 +20,6 @@ class DiscoveriesController < ApplicationController
                 end
             end
         end
-
-      	#@people = Discoveries.instance.findNearbyUsers(current_user.id, 500)
 
   	end
 
