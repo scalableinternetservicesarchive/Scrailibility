@@ -14,7 +14,7 @@ class DiscoveriesController < ApplicationController
         for timeslot in timeslots
             for user in timeslot.users
                 if (!@people[user.id] and user.id != current_user.id)
-                    @people[user.id] = user
+                    @people[user.id] = user.profile
                 end
             end
         end
