@@ -41,19 +41,14 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  # Paperclip local config:
+  # Paperclip config:
   config.paperclip_defaults = {
-    url: "/assets/profiles/images/:id/:style/:filename",
-    path: ":rails_root/public/assets/profile/image/:id/:style/:filename"
-}
-  #Paperclip aws config
-  # config.paperclip_defaults = {
-  #   :storage => :s3,
-  #   :s3_credentials => {
-  #     :bucket => 'scalableinternetservices/Scrailibility/',
-  #     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-  #     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  #   },
-  #   :s3_host_name => 's3-us-west-2.amazonaws.com'
-  # }
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'scalableinternetservices/Scrailibility/',
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    :s3_host_name => 's3-us-west-2.amazonaws.com'
+  }
 end
