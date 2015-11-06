@@ -80,7 +80,7 @@ Rails.application.configure do
   # # Paperclip config:
   # Paperclip.options[:command_path] = "/usr/local/bin/"
 
-  Paperclip deploy on AWS config
+  # Paperclip deploy on AWS config
   config.paperclip_defaults = {
       :storage => :fog,
       :fog_credentials => {

@@ -44,7 +44,7 @@ Rails.application.configure do
   # Paperclip local config:
   config.paperclip_defaults = {
     url: "/assets/profiles/images/:id/:style/:filename",
-    path: ":rails_root/public/assets/profiles/images/:id/:style/:filename"
+    path: ":rails_root/public/assets/profile/image/:id/:style/:filename"
 }
   #Paperclip aws config
   # config.paperclip_defaults = {
