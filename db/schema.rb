@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20151105100849) do
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.text     "body",            limit: 65535
+    t.string   "body",            limit: 255
     t.integer  "conversation_id", limit: 4
     t.integer  "user_id",         limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
@@ -47,18 +47,19 @@ ActiveRecord::Schema.define(version: 20151105100849) do
     t.string   "add2",               limit: 255
     t.string   "city",               limit: 255
     t.string   "state",              limit: 255
-    t.string   "post_code",          limit: 255
+    t.string   "country",            limit: 255
+    t.integer  "post_code",          limit: 4
+    t.float    "latitude",           limit: 24
+    t.float    "longitude",          limit: 24
     t.datetime "birthday"
+    t.string   "birthyear",          limit: 255
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
-    t.string   "image_url",          limit: 255
-    t.string   "user_id",            limit: 255
+    t.integer  "user_id",            limit: 4
     t.string   "photo_file_name",    limit: 255
     t.string   "photo_content_type", limit: 255
     t.integer  "photo_file_size",    limit: 4
     t.datetime "photo_updated_at"
-    t.decimal  "longitude",                      precision: 4
-    t.decimal  "latitude",                       precision: 4
   end
 
   create_table "timeslots", force: :cascade do |t|
@@ -95,6 +96,8 @@ ActiveRecord::Schema.define(version: 20151105100849) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "user_timeslots", "timeslots"
   add_foreign_key "user_timeslots", "users"
 end
