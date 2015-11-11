@@ -1,6 +1,6 @@
 <%= form_for @profile, url: {action: @action}, html: { multipart: true } do |f| %>
   <% if @profile.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" >
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
       <ul>
@@ -29,7 +29,7 @@
       <div class="field">
       <%= f.label :nickname %><br />
       <%= f.text_field :nick_name %>
-      <%= label_tag :name, 'Name:' %>
+      
   </div>
 
   <div class="field">
