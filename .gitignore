@@ -17,4 +17,8 @@
 /tmp
 .DS_Store
 
+# Ignore profile pictures
 /public/assets/profile/*
+
+# Ignore database configurations
+/config/database.yml

@@ -13,12 +13,14 @@ class Discoveries < ActiveRecord::Base
 				+ SIN(RADIANS($latitude))
 				* SIN(RADIANS(center_lat))))) < radius
 =end
-    loc = Profile.select("latitude, longitude").where("user_id = ?", uid).values()
-    distance = Profile.where("(69.0 * DEGREES(ACOS(COS(RADIANS(latitude))
+    Rails.logger.debug("debug::ID is: #{uid}")
+    @loc = Profile.select("latitude, longitude").find(uid)
+    Rails.logger.debug("debug::loc is: #{@loc}")
+    @distance = Profile.where("(69.0 * DEGREES(ACOS(COS(RADIANS(latitude))
     * COS(RADIANS(?))
     * COS(RADIANS(longitude) - RADIANS(?))
     + SIN(RADIANS(latitude))
-    * SIN(RADIANS(?))))) < ?", loc['latitude'], loc['longitude'], loc['latitude'], radius)
-    return distance
+    * SIN(RADIANS(?))))) < ?", @loc['latitude'], @loc['longitude'], @loc['latitude'], radius)
+    return @distance
   end
 end
