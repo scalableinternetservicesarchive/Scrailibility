@@ -36,7 +36,7 @@ gem 'thin'
 #use paperclip to support user upload image"
 gem "paperclip"
 gem 'aws-sdk', '< 2.0.0'
-gem 'fog'
+gem 'fog',:git => 'https://github.com/fog/fog-aliyun.git'
 
 gem 'acts_as_singleton'
 
