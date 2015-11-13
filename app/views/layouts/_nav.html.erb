@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? && current_user.profile %>
             <li>
-              <%= link_to "My Profile", profile_path(current_user.profile.id) %>
+              <%= link_to "My Profile", edit_profile_path(current_user.profile.id) %>
             </li>
             <li>
               <%= link_to "Gym&people", '/gyms/nearby_gym' %>

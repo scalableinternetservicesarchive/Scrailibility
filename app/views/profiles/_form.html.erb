@@ -113,6 +113,12 @@
 </div>
 </div>
 <div class="text-center">
-   <%= f.submit "Create Profile", class: "btn btn-default" %>
+  <% if @action == 'Create' %>
+    <%= f.submit "create", class: "btn btn-default" %>
+  <% else %>
+    <%= f.submit "update", class: "btn btn-default" %>
+    <br>
+    <%= link_to "cancel", discovery_path, class: "btn btn-default" %>
+  <% end %>
 </div>
 <% end %>

@@ -46,6 +46,7 @@ class ProfilesController < ApplicationController
       redirect_to root_path
       return
     end
+    @profile = current_user.profile
     @action = "update"
     @timeslots = Hash.new
     @timeslots.default = nil
@@ -98,6 +99,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    profile = current_user.profile
     respond_to do |format|
       user_timeslots = params[:time]
       if (user_timeslots == nil)
@@ -113,12 +115,12 @@ class ProfilesController < ApplicationController
         end
       end
 
-      if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @profile }
+      if profile.update(profile_params)
+        format.html { redirect_to profile, notice: 'Profile was successfully updated.' }
+        format.json { render :show, status: :ok, location: profile }
       else
         format.html { render :edit }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.json { render json: profile.errors, status: :unprocessable_entity }
       end
     end
   end
