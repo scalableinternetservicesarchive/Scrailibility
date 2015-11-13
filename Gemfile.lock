@@ -40,24 +40,22 @@ GEM
     acts_as_singleton (0.0.8)
       activerecord (>= 3.1.0)
     addressable (2.3.8)
-      activerecord (>= 3.1.0)
     arel (6.0.3)
-    autoprefixer-rails (6.0.3)
+    autoprefixer-rails (6.1.0.1)
       execjs
       json
-    aws-sdk (2.1.33)
-      aws-sdk-resources (= 2.1.33)
-    aws-sdk-core (2.1.33)
-      jmespath (~> 1.0)
-    aws-sdk-resources (2.1.33)
-      aws-sdk-core (= 2.1.33)
+    aws-sdk (1.66.0)
+      aws-sdk-v1 (= 1.66.0)
+    aws-sdk-v1 (1.66.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
-    byebug (6.0.2)
+    byebug (8.0.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -192,7 +190,7 @@ GEM
     fog-serverlove (0.1.2)
       fog-core
       fog-json
-    fog-softlayer (1.0.1)
+    fog-softlayer (1.0.2)
       fog-core
       fog-json
     fog-storm_on_demand (0.1.1)
@@ -217,14 +215,18 @@ GEM
     geocoder (1.2.12)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    google_places (0.32.0)
+      httparty (~> 0.13.1)
     http_parser.rb (0.6.0)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jmespath (1.1.3)
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -237,8 +239,9 @@ GEM
     mime-types (2.6.2)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
-    minitest (5.8.1)
+    minitest (5.8.2)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     mysql (2.9.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -334,17 +337,18 @@ PLATFORMS
 DEPENDENCIES
   acts_as_singleton
   autoprefixer-rails
-  aws-sdk
+  aws-sdk (< 2.0.0)
   bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.1.0)
   devise
   fog
   geocoder
+  google_places
   jbuilder (~> 2.0)
   jquery-rails
   mysql
-  paperclip (~> 4.3)
+  paperclip
   private_pub
   rails (= 4.2.4)
   sass-rails (~> 5.0)

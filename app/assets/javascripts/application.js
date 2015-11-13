@@ -19,3 +19,4 @@
 //= require private_pub
 //= require chat
 //= require private_pub
+//= require polling

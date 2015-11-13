@@ -1,0 +1,14 @@
+<% @conversations.each do |conversation| %>
+<p class="single-chat">
+  <br></br>
+  <br></br>
+  <span class="chat-image">
+
+    <%= link_to image_tag(the_other(conversation).photo(:thumb)),"#", class: "start-conversation",
+            "data-sid" => current_user.id, "data-rip" => the_other(conversation).user_id%>
+
+    <%= link_to conversation.last_message,"#", class: "start-conversation",
+                "data-sid" => current_user.id, "data-rip" => the_other(conversation).user_id%>
+  </span>
+</p>
+<% end %>

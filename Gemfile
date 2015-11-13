@@ -34,7 +34,9 @@ gem 'private_pub'
 gem 'thin'
 
 #use paperclip to support user upload image"
-gem "paperclip", "~> 4.3"
+gem "paperclip"
+gem 'aws-sdk', '< 2.0.0'
+gem 'fog'
 
 gem 'acts_as_singleton'
 
@@ -60,7 +62,6 @@ group :development do
   gem 'spring'
 end
 
-gem 'aws-sdk'
-gem 'fog'
-
 gem 'geocoder'
+
+gem 'google_places'
