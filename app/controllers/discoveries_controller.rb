@@ -1,5 +1,11 @@
 class DiscoveriesController < ApplicationController
 	before_filter :authenticate_user!
+
+
+	def gym_people
+		place_id = params[:place_id]
+		@profiles = Profile.gym_people(place_id)
+	end
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user
 	def show

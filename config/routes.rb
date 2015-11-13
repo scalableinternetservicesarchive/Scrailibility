@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   post 'conversations/read_messages', to: 'conversations#read_messages'
   get 'conversations/check_new_messages', to: 'conversations#check_new_messages'
   get 'chats', to: 'chats#index'
+  get 'gyms/nearby_gym', to: 'gyms#nearby_gym'
+  get 'profiles/your_gym', to: 'profiles#your_gym'
+  get 'save_gym_information/:place_id', to: 'profiles#save_gym_information'
+  get 'gym_people/:place_id', to: 'discoveries#gym_people'
   resources :profiles
   resource :discovery
   devise_for :users, controllers: { registrations: "registrations" }

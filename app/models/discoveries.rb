@@ -3,7 +3,6 @@ require 'singleton'
 class Discoveries < ActiveRecord::Base
   self.table_name = "profiles"
   include Singleton
-
   def findNearbyUsers(uid, radius)
 =begin
 		distance = SELECT * FROM profiles WHERE
@@ -23,4 +22,5 @@ class Discoveries < ActiveRecord::Base
     * SIN(RADIANS(?))))) < ?", @loc['latitude'], @loc['longitude'], @loc['latitude'], radius)
     return @distance
   end
+  
 end

@@ -63,3 +63,5 @@ group :development do
 end
 
 gem 'geocoder'
+
+gem 'google_places'

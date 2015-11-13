@@ -215,7 +215,12 @@ GEM
     geocoder (1.2.12)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    google_places (0.32.0)
+      httparty (~> 0.13.1)
     http_parser.rb (0.6.0)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -236,6 +241,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.8.2)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     mysql (2.9.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -338,6 +344,7 @@ DEPENDENCIES
   devise
   fog
   geocoder
+  google_places
   jbuilder (~> 2.0)
   jquery-rails
   mysql

@@ -1,7 +1,18 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  # before_action :set_profile, only: [:show, :edit, :update, :destroy, :save]
   skip_before_filter :verify_authenticity_token
 
+  def your_gym
+    @latitude = current_user.profile.latitude
+    @longitude = current_user.profile.longitude
+  end
+
+  def save_gym_information
+    place_id = params[:place_id]
+    current_user.profile.place_id = place_id
+    current_user.profile.save
+    redirect_to discovery_path
+  end
   # GET /profiles
   # GET /profiles.json
   def index
@@ -75,7 +86,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to controller: 'discoveries', action: 'show'}
+        format.html { redirect_to controller: 'profiles', action: 'your_gym'}
         format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new }
@@ -142,6 +153,6 @@ class ProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:name, :nick_name, :age, :height, :weight, :add1,
-       :add2, :city, :state, :post_code, :birthday, :photo)
+       :add2, :city, :state, :post_code, :birthday, :photo, :place_id)
     end
 end
