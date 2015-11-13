@@ -27,12 +27,12 @@ class DiscoveriesController < ApplicationController
 		end
 =end
 
-		nearby = Discoveries.instance.findNearbyUsers(current_user.id, 20)
+		nearby = Discoveries.instance.findNearbyUsers(current_user.profile.id, 20)
 		@people = Hash.new
 		@people.default = nil
 		for person in nearby
-			if (!@people[person.user_id] and person.user_id != current_user.id)
-				@people[person.user_id] = person
+			if (!@people[person.id] and person.id != current_user.profile.id)
+				@people[person.id] = person
 			end
 		end
 	end
