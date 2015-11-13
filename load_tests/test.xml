@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/home/ec2-user/opt/tsung-1.5.0/share/tsung/tsung-1.0.dtd">
+<tsung loglevel="notice" version="1.0">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="{{ENTER_HOST_HERE}}" port="80" type="tcp"></server>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="30" unit="second">
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="30" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="30" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+<!--
+   <arrivalphase phase="4" duration="30" unit="second">
+     <users arrivalrate="8" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="5" duration="30" unit="second">
+     <users arrivalrate="16" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="6" duration="30" unit="second">
+     <users arrivalrate="32" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="7" duration="30" unit="second">
+     <users arrivalrate="64" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="8" duration="30" unit="second">
+     <users arrivalrate="128" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="9" duration="30" unit="second">
+     <users arrivalrate="256" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="10" duration="30" unit="second">
+     <users arrivalrate="512" unit="second"></users>
+   </arrivalphase>
+-->
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="http-example" probability="100" type="ts_http">
+
+      <!-- start out at the dashboard. -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking at posts -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- visit the sign up page, as a user would do.  -->
+      <request>
+        <http url='/users/sign_up' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is filling out new community form -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- create a random number to make a unique community name -->
+      <setdynvars sourcetype="erlang" callback="ts_user_server:get_unique_id">
+        <var name="random_email" />
+      </setdynvars>
+
+      <request>
+        <dyn_variable name="authenticity_token">
+        <http url="/users/sign_up" method="GET" version="1.1"></http>>
+      </request>
+
+      <!-- post to /communities to create a community.
+           remember the url of the created community so we can delete it later -->
+      <request subst="true">
+        <dyn_variable name="session_cookie" re="[Ss]et-Cookie: _Scrailibility_session=(.*);"/>
+        <http
+          url='/users'
+          version='1.1'
+          method='POST'
+          contents='user%5Bemail%5D=%%_random_email%%%40gmail%2Ecom&amp;user%5Bpassword%5D=password&amp;user%5Bpassword_confirmation%5D=password&amp;authenticity_token=%%_authenticity_token%%&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'>
+        </http>
+      </request>
+
+      <request>
+        <dyn_variable name="authenticity_token">
+        <http url="/profiles/new" method="GET" version="1.1"></http>>
+      </request>
+
+      <!-- visit the new submission form, as a user would do.  -->
+      <request>
+        <http url='/profiles/new' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is fillinf in new submission form -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- create a new submission in the community we just created -->
+      <setdynvars sourcetype="random_number" start="100" end="200">
+        <var name="random_weight" />
+      </setdynvars>
+
+      <setdynvars sourcetype="random_number" start="300" end="500">
+        <var name="random_height" />
+      </setdynvars>
+
+      <request subst="true">
+        <http
+          url='/submissions'
+          version='1.1'
+          method='POST'
+          contents_from_file='------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="utf8"
+
+✓
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="authenticity_token"
+
+%%_authenticity_token%%
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[1]"
+
+1
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[6]"
+
+6
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[10]"
+
+10
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[11]"
+
+11
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[15]"
+
+15
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[18]"
+
+18
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[19]"
+
+19
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[name]"
+
+Calvin
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[nick_name]"
+
+sdfghjk
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[weight]"
+
+%%_random_weight%%
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[height]"
+
+%%_random_height%%
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[add1]"
+
+405 Hilgard Avenue
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[add2]"
+
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[city]"
+
+Los Angeles
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[state]"
+
+CA
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[post_code]"
+
+90095
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[photo]"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="month"
+
+mercedes
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="day"
+
+volvo
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="year"
+
+volvo
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="commit"
+
+Create Profile
+------WebKitFormBoundaryQIA377ilsXIzDK8u--'
+          content_type='multipart/form-data'>
+        </http>
+      </request>
+
+      <!-- Uncomment the following to debug print your dynamic variables  --> 
+      <!--
+      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+        ok end.">
+        <var name="dump" />
+      </setdynvars>
+      -->
+    </session>
+  </sessions>
+</tsung>
