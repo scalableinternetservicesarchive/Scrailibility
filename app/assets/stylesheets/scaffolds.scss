@@ -36,19 +36,55 @@ div {
   color: green;
 }
 
+// .field_with_errors {
+//   text-align: center;
+//   padding: 2px;
+//   background-color: red;
+//   display: table;
+// }
+
+// #error_explanation {
+//   text-align: center;
+//   width: 450px;
+//   border: 2px solid red;
+//   padding: 2px;
+//   padding-bottom: 0;
+//   margin-bottom: 20px;
+//   background-color: #f0f0f0;
+
+//   h2 {
+//     text-align: center;
+//     font-weight: bold;
+//     padding: 5px 5px 5px 15px;
+//     font-size: 10px;
+//     margin: -7px;
+//     margin-bottom: 0px;
+//     background-color: #c00;
+//     color: #fff;
+//   }
+
+//   ul li {
+//     font-size: 12px;
+//     list-style: square;
+//   }
+// }
 .field_with_errors {
   text-align: center;
   padding: 2px;
   background-color: red;
   display: table;
+   margin-left:auto;
+  margin-right:auto;
 }
 
 #error_explanation {
   text-align: center;
-  width: 450px;
+  width: 600px;
   border: 2px solid red;
   padding: 2px;
   padding-bottom: 0;
+  margin-left:auto;
+  margin-right:auto;
   margin-bottom: 20px;
   background-color: #f0f0f0;
 

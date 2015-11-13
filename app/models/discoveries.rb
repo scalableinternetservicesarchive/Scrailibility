@@ -3,7 +3,7 @@ require 'singleton'
 class Discoveries < ActiveRecord::Base
   self.table_name = "profiles"
   include Singleton
-  def findNearbyUsers(uid, radius)
+  def findNearbyUsers(pid, radius)
 =begin
 		distance = SELECT * FROM profiles WHERE
 				(69.0 * DEGREES(ACOS(COS(RADIANS($latitude))
@@ -12,8 +12,8 @@ class Discoveries < ActiveRecord::Base
 				+ SIN(RADIANS($latitude))
 				* SIN(RADIANS(center_lat))))) < radius
 =end
-    Rails.logger.debug("debug::ID is: #{uid}")
-    @loc = Profile.select("latitude, longitude").find(uid)
+    Rails.logger.debug("debug::ID is: #{pid}")
+    @loc = Profile.select("latitude, longitude").find(pid)
     Rails.logger.debug("debug::loc is: #{@loc}")
     @distance = Profile.where("(69.0 * DEGREES(ACOS(COS(RADIANS(latitude))
     * COS(RADIANS(?))
@@ -22,5 +22,5 @@ class Discoveries < ActiveRecord::Base
     * SIN(RADIANS(?))))) < ?", @loc['latitude'], @loc['longitude'], @loc['latitude'], radius)
     return @distance
   end
-  
+
 end
