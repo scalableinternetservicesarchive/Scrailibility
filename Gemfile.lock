@@ -103,15 +103,18 @@ GEM
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.35.0)
+      fog-aliyun (= 0.1.0)
       fog-aliyun
       fog-atmos
       fog-aws (>= 0.6.0)
       fog-brightbox (~> 0.4)
+      fog-core (~> 1.27)
       fog-core (~> 1.32)
       fog-dynect (~> 0.0.2)
       fog-ecloud (~> 0.1)
       fog-google (>= 0.1.1)
       fog-json
+      fog-json (~> 1.0)
       fog-local
       fog-powerdns (>= 0.1.1)
       fog-profitbricks
@@ -127,8 +130,10 @@ GEM
       fog-xenserver
       fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
+      ipaddress (~> 0.8)
       nokogiri
-    fog-aliyun (0.0.10)
+      xml-simple (~> 1.1)
+    fog-aliyun (0.1.0)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       ipaddress (~> 0.8)
