@@ -16,6 +16,8 @@
 !/log/.keep
 /tmp
 .DS_Store
+
+# Ignore profile pictures
 /public/assets/profile/*
 
 # Ignore database configurations

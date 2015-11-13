@@ -12,7 +12,6 @@ class Profile < ActiveRecord::Base
    end
     after_validation :geocode ,:if => :add1_changed?
 
-
 	scope :gym_people, -> (place_id) do
 		where("profiles.place_id =?",place_id)
 	end
