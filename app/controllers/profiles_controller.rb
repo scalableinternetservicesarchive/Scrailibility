@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   def your_gym
     @latitude = current_user.profile.latitude
     @longitude = current_user.profile.longitude
+    fresh_when([@latitude, @longitude])
   end
 
   def save_gym_information
@@ -23,6 +24,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
+    fresh_when([@profile])
   end
 
   # GET /profiles/new
