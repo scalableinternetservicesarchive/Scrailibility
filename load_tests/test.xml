@@ -83,7 +83,7 @@
 
       <request>
         <dyn_variable name="authenticity_token">
-        <http url="/users/sign_up" method="GET" version="1.1"></http>>
+        <http url="/users/sign_up" method="GET" version="1.1"></http>
       </request>
 
       <!-- post to /communities to create a community.
@@ -100,7 +100,7 @@
 
       <request>
         <dyn_variable name="authenticity_token">
-        <http url="/profiles/new" method="GET" version="1.1"></http>>
+        <http url="/profiles/new" method="GET" version="1.1"></http>
       </request>
 
       <!-- visit the new submission form, as a user would do.  -->
@@ -125,6 +125,7 @@
           url='/submissions'
           version='1.1'
           method='POST'
+          content_type='multipart/form-data;boundary=WebKitFormBoundaryQIA377ilsXIzDK8u'
           contents_from_file='------WebKitFormBoundaryQIA377ilsXIzDK8u
 Content-Disposition: form-data; name="utf8"
 
@@ -218,7 +219,7 @@ Content-Disposition: form-data; name="commit"
 
 Create Profile
 ------WebKitFormBoundaryQIA377ilsXIzDK8u--'
-          content_type='multipart/form-data'>
+          >
         </http>
       </request>
 
