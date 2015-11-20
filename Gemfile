@@ -65,3 +65,5 @@ end
 gem 'geocoder'
 
 gem 'google_places'
+
+gem 'dalli'

@@ -69,6 +69,7 @@ GEM
     coffee-script-source (1.9.1.1)
     cookiejar (0.3.2)
     daemons (1.2.3)
+    dalli (2.7.4)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -346,6 +347,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.1.0)
+  dalli
   devise
   fog
   geocoder
