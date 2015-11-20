@@ -103,7 +103,6 @@
         <http url="%%_created_user_profile_url%%" method="GET" version="1.1"></http>
       </request>
 
-      <!-- wait for up to 5 seconds, user is fillinf in new submission form -->
       <thinktime value="5" random="true"></thinktime>
 
       <!-- create a new submission in the community we just created -->
@@ -116,14 +115,12 @@
       </setdynvars>
 
       <request subst="true">
-        <dyn_variable name="created_user_url" re="[Ll]ocation: (http://.*)\r"/>
         <http
           url='/profiles'
           version='1.1'
           method='POST'
-          contents_from_file='/home/ec2-user/.tsung/create-profile.bin'
-          content_type='multipart/form-data; boundary=------WebKitFormBoundaryQIA377ilsXIzDK8u'
-          ></http>
+      contents='time%5B1%5D=1&amp;time%5B16%5D=16&amp;profile%5Bname%5D=calvin&amp;profile%5Badd1%5D=405%20Hilgard%20Avenue&amp;profile%5Bcity%5D=Los%20Angeles&amp;profile%5Bstate%5D=CA&amp;profile%5Bpost_code%5D=90095&amp;authenticity_token=%%_authenticity_token%%&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'
+        ></http>
       </request>
 
       <request>
