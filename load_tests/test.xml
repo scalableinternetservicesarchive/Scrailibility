@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="{{ENTER_HOST_HERE}}" port="80" type="tcp"></server>
+    <server host="ec2-52-33-155-139.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -100,12 +100,11 @@
       </request>
 
       <request>
-        <dyn_variable name="authenticity_token"/>
         <http url="%%_created_user_profile_url%%" method="GET" version="1.1"></http>
       </request>
 
-      <!-- wait for 5 seconds, user is fillinf in new submission form -->
-      <thinktime value="5" random="false"></thinktime>
+      <!-- wait for up to 5 seconds, user is fillinf in new submission form -->
+      <thinktime value="5" random="true"></thinktime>
 
       <!-- create a new submission in the community we just created -->
       <setdynvars sourcetype="random_number" start="100" end="200">
@@ -117,20 +116,19 @@
       </setdynvars>
 
       <request subst="true">
+        <dyn_variable name="created_user_url" re="[Ll]ocation: (http://.*)\r"/>
         <http
-          url='/submissions'
+          url='/profiles'
           version='1.1'
           method='POST'
-          contents_from_file='/home/ec2-user/create-profile.bin'
-          content_type='multipart/form-data;boundary=WebKitFormBoundaryQIA377ilsXIzDK8u'
-          >
-        </http>
+          contents_from_file='/home/ec2-user/.tsung/create-profile.bin'
+          content_type='multipart/form-data; boundary=------WebKitFormBoundaryQIA377ilsXIzDK8u'
+          ></http>
       </request>
-
 
       <request>
         <http
-          url="/discoveries"
+          url="/discovery"
           version="1.1"
           method="GET" >
         </http>
@@ -152,14 +150,11 @@
         </http>
       </request>
 
-      <!-- Uncomment the following to debug print your dynamic variables  -->
-      <!--
       <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
         io:format([126, $p, 126, $n, 126, $n], [DynVars]),
         ok end.">
         <var name="dump" />
       </setdynvars>
-      -->
     </session>
   </sessions>
 </tsung>
