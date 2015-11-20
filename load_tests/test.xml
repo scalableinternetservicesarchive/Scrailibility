@@ -90,6 +90,7 @@
            remember the url of the created community so we can delete it later -->
       <request subst="true">
         <dyn_variable name="session_cookie" re="[Ss]et-Cookie: _Scrailibility_session=(.*);"/>
+        <dyn_variable name="created_user_profile_url" re="[Ll]ocation: (http://.*)\r"/>
         <http
           url='/users'
           version='1.1'
@@ -100,16 +101,11 @@
 
       <request>
         <dyn_variable name="authenticity_token"/>
-        <http url="/profiles/new" method="GET" version="1.1"></http>
+        <http url="%%_created_user_profile_url%%" method="GET" version="1.1"></http>
       </request>
 
-      <!-- visit the new submission form, as a user would do.  -->
-      <request>
-        <http url='/profiles/new' version='1.1' method='GET'></http>
-      </request>
-
-      <!-- wait for up to 2 seconds, user is fillinf in new submission form -->
-      <thinktime value="2" random="true"></thinktime>
+      <!-- wait for 5 seconds, user is fillinf in new submission form -->
+      <thinktime value="5" random="false"></thinktime>
 
       <!-- create a new submission in the community we just created -->
       <setdynvars sourcetype="random_number" start="100" end="200">
