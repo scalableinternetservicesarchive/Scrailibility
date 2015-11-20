@@ -1,0 +1,93 @@
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="utf8"
+
+✓
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="authenticity_token"
+
+%%_authenticity_token%%
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[1]"
+
+1
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[6]"
+
+6
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[10]"
+
+10
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[11]"
+
+11
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[15]"
+
+15
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[18]"
+
+18
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="time[19]"
+
+19
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[name]"
+
+Calvin
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[nick_name]"
+
+sdfghjk
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[weight]"
+
+%%_random_weight%%
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[height]"
+
+%%_random_height%%
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[add1]"
+
+405 Hilgard Avenue
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[add2]"
+
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[city]"
+
+Los Angeles
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[state]"
+
+CA
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[post_code]"
+
+90095
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="profile[photo]"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="month"
+
+mercedes
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="day"
+
+volvo
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="year"
+
+volvo
+------WebKitFormBoundaryQIA377ilsXIzDK8u
+Content-Disposition: form-data; name="commit"
+
+Create Profile
+------WebKitFormBoundaryQIA377ilsXIzDK8u--
