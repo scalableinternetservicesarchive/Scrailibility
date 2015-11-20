@@ -72,7 +72,10 @@ class ProfilesController < ApplicationController
     # @profile = user.profile.build(profile_params)
     @profile = Profile.new(profile_params)
     @profile.user_id = user.id
-
+    if @profile.latitude.nil?
+      @profile.latitude = 34.06897
+      @profile.longitude = -118.44516
+    end
     user_timeslots = params[:time]
     if (user_timeslots == nil)
         user_timeslots = Hash.new
