@@ -382,6 +382,55 @@ border-radius: 50px;}
 }
 
 
+  table {
+    border-collapse: collapse;
+    width:  600px;
+    
+  }
+
+  table tr td {
+    padding: 5px;
+    vertical-align: center;
+  }
+
+  .list_image {
+    width:  60px;
+    height: 70px;
+  }
+
+  .list_description {
+    width: 60%;
+
+    dl {
+      margin: 0;
+    }
+
+    dt {
+      color:        #244;
+      font-weight:  bold;
+      font-size:    larger;
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  .list_actions {
+    font-size:    x-small;
+    text-align:   right;
+    padding-left: 1em;
+  }
+
+  .list_line_even {
+    color:        #FFFFFF;
+  }
+  .list_line_odd {
+   color:        #244;
+  }
+
+
+
 
 
 

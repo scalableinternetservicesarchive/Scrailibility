@@ -1,0 +1,25 @@
+I"(function() {
+  window.Poller = {
+    poll: function(timeout) {
+      if (timeout === 0) {
+        return Poller.request();
+      } else {
+        return this.pollTimeout = setTimeout(function() {
+          return Poller.request();
+        }, timeout || 3000);
+      }
+    },
+    clear: function() {
+      return clearTimeout(this.pollTimeout);
+    },
+    request: function() {
+      return $.get('/conversations/check_new_messages');
+    }
+  };
+
+  jQuery(function() {
+    return Poller.poll();
+  });
+
+}).call(this);
+:ET

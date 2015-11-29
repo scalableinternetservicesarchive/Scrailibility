@@ -31,7 +31,7 @@
 		<br><br><br>
 	        <% if current_user.profile.id != @profile.id%>
         	   <div class="text-center"><%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                    "data-sid" => current_user.id, "data-rip" => @profile.user_id %></div>
+                    "data-sid" => current_user.id, "data-rip" => @profile.user_id %> </div>
           <% end %>
 <br>
 <div class="render">

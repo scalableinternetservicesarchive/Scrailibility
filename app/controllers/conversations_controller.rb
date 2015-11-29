@@ -1,4 +1,4 @@
-class ConversationsController < ApplicationController
+xclass ConversationsController < ApplicationController
   before_filter :authenticate_user!
 
   layout false
