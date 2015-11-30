@@ -1,12 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-addresses = [
 {:longitude => -118.59182, :latitude => 34.160935, :address => '5003 Escobedo Dr, Woodland Hills, CA 91364, USA'},
 {:longitude => -118.6089752, :latitude => 34.165357, :address => 'Woodland Hills, Los Angeles, CA, USA'},
 {:longitude => -118.2436849, :latitude => 34.0522342, :address => 'Los Angeles, CA, USA'},
@@ -1146,50 +1137,4 @@ addresses = [
 {:longitude => -118.5272612, :latitude => 34.0315302, :address => '15100 Ocean Front Walk, Pacific Palisades, CA 90272, USA'},
 {:longitude => -118.2436849, :latitude => 34.0522342, :address => 'Los Angeles, CA, USA'},
 {:longitude => -118.2436596, :latitude => 34.0522265, :address => 'Los Angeles County, CA, USA'},
-{:longitude => -95.712891, :latitude => 37.09024, :address => 'United States'}
-]
-
-for i in 0..23
-    for j in 0..1
-        time = "#{i}:#{j*30}:00"
-        Timeslot.create(begintime: time)
-    end
-end
-
-addresses.each_with_index { |address, index|
-    name = "seeduser#{index}"
-    email = "#{name}@seeddata.com"
-    encrypted_password = 'seedpassword'
-    created_at = DateTime.now
-    updated_at = created_at
-    prng = Random.new
-
-    user = User.create(
-        email: email,
-        encrypted_password: encrypted_password,
-        sign_in_count: 0,
-        created_at: created_at,
-        updated_at: updated_at
-    )
-
-    user.save(:validate => false)
-    Profile.skip_callback(:validate, :after, :after_validate)
-
-    user.create_profile(
-        name: name,
-        age: prng.rand(18...70),
-        height: prng.rand(150...250),
-        weight: prng.rand(50...150),
-        add2: address[:address],
-        latitude: address[:latitude],
-        longitude: address[:longitude],
-        created_at: created_at,
-        updated_at: updated_at,
-    )
-
-    for i in 0...10
-        user.user_timeslots.create(
-            timeslot_id: prng.rand(1...24) 
-        )
-    end
-}
+{:longitude => -95.712891, :latitude => 37.09024, :address => 'United States'},
