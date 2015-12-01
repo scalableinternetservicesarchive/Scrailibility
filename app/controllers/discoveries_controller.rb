@@ -4,7 +4,18 @@ class DiscoveriesController < ApplicationController
 
 	def gym_people
 		place_id = params[:place_id]
-		@profiles = Profile.gym_people(place_id)
+		#save/get people's profile into cache
+		@profiles = Rails.cache.fetch("profiles_id_of_#{place_id}") do
+			profiles = Profile.gym_people_profile(place_id)
+			# p_id = Array.new
+			# profiles.each do |profile|
+			# 	p_id.push(profile.id)
+			# end
+			# Rails.cache.write("profiles_id_of_#{place_id}", p_id, expires_in: 2.minute)
+			# p_id
+			profiles
+		end
+		fresh_when([@profiles])
 	end
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user

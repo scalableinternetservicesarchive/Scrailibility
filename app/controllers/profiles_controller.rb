@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   def your_gym
     @latitude = current_user.profile.latitude
     @longitude = current_user.profile.longitude
+    fresh_when([@latitude, @longitude])
   end
 
   def save_gym_information
@@ -23,6 +24,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
+    fresh_when([@profile])
   end
 
   # GET /profiles/new
@@ -70,7 +72,10 @@ class ProfilesController < ApplicationController
     # @profile = user.profile.build(profile_params)
     @profile = Profile.new(profile_params)
     @profile.user_id = user.id
-
+    if @profile.latitude.nil?
+      @profile.latitude = 34.06897
+      @profile.longitude = -118.44516
+    end
     user_timeslots = params[:time]
     if (user_timeslots == nil)
         user_timeslots = Hash.new

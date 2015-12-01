@@ -35,10 +35,11 @@
 
                         <div class="people">
 
-                        <% @profiles.each do |profile| %>
+                        <% @profiles_id.each do |profile_id| %>
+                        <%= profile = Profile.find(profile_id)%>
                          <div class="col-lg-4 col-md-4">
                             <div class="text-center">
-                            <h5><%=profile.name%></h5>
+                            <h5><%= profile.name%></h5>
                           <a href= <%= profile_path(profile.id)%> >
                           <%= image_tag profile.photo.url(:thumb),class:"img-thumbnail img-responsive"%>
                            </a>
