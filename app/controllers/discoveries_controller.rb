@@ -41,9 +41,6 @@ class DiscoveriesController < ApplicationController
 			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_matches", people, expires_in: 2.minutes)
 			people
 		end
-<<<<<<< HEAD
 		fresh_when(@people.values)
-=======
->>>>>>> server_side_caching
 	end
 end
