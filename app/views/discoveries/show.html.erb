@@ -27,36 +27,28 @@
         <!-- Page Content -->
 
 
-            <div class="edit-section">
-            <div class="container">
-                <br><br><br>
+  <div class="edit-section">
+  <div class="container">
+      <br><br><br>
 
-                        <h2>Find who is here</h2>
+              <h2>Find who is here</h2>
 
-                        <div class="people">
+              <div class="people">
 
-                        <% @people.each do |uid, profile| %>
-                         <div class="col-lg-4 col-md-4">
-                            <div class="text-center">
-                            <h5><%=profile.name%></h5>
-                          <a href= <%= profile_path(profile.id)%> >
-                          <%= image_tag profile.photo.url(:thumb),class:"img-thumbnail img-responsive"%>
-                           </a>
-                         </div>
-                     </div>
-
-                         <% end %>
-                         </div>
+              <% @profiles.each do |uid, profile| %>
+                <% cache(profile) do%>
+                 <div class="col-lg-4 col-md-4">
+                    <div class="text-center">
+                      <h5><%=profile.name%></h5>
+                      <a href= <%= profile_path(profile.id)%> >
+                        <%= image_tag profile.photo.url(:thumb),class:"img-thumbnail img-responsive"%>
+                      </a>
                     </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-
-
-
-</div>
-</body>
+               </div>
+              <% end %>
+             <% end %>
+               </div>
+          </div>
+      </div>
+  </body>
 </html>

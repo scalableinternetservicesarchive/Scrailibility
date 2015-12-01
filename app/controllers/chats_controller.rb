@@ -8,7 +8,6 @@ class ChatsController < ApplicationController
         Rails.cache.write("#{current_user.id}_chats_cache", conversations)
         conversations
       end
-     fresh_when(@conversations)
   end
 
 end
