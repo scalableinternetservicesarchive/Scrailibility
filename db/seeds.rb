@@ -5035,47 +5035,56 @@ addresses = [
 {:longitude => -95.712891, :latitude => 37.09024, :address => 'United States'},
 ]
 
-for i in 0..23
-    for j in 0..1
-        time = "#{i}:#{j*30}:00"
-        Timeslot.create(begintime: time)
-    end
+begin
+    mutex = SeedMutex.create(acquired: true)
+rescue ActiveRecord::RecordNotUnique
+    mutex = nil
 end
 
-addresses.each_with_index { |address, index|
-    name = "seeduser#{index}"
-    email = "#{name}@seeddata.com"
-    encrypted_password = 'seedpassword'
-    created_at = DateTime.now
-    updated_at = created_at
-    prng = Random.new
+if mutex
 
-    user = User.create(
-        email: email,
-        encrypted_password: encrypted_password,
-        sign_in_count: 0,
-        created_at: created_at,
-        updated_at: updated_at
-    )
-
-    user.save(:validate => false)
-    Profile.skip_callback(:validate, :after, :after_validate)
-
-    user.create_profile(
-        name: name,
-        age: prng.rand(18...70),
-        height: prng.rand(150...250),
-        weight: prng.rand(50...150),
-        add2: address[:address],
-        latitude: address[:latitude],
-        longitude: address[:longitude],
-        created_at: created_at,
-        updated_at: updated_at,
-    )
-
-    for i in 0...10
-        user.user_timeslots.create(
-            timeslot_id: prng.rand(1...24)
-        )
+    for i in 0..23
+        for j in 0..1
+            time = "#{i}:#{j*30}:00"
+            Timeslot.create(begintime: time)
+        end
     end
-}
+
+    addresses.each_with_index { |address, index|
+        name = "seeduser#{index}"
+        email = "#{name}@seeddata.com"
+        encrypted_password = 'seedpassword'
+        created_at = DateTime.now
+        updated_at = created_at
+        prng = Random.new
+
+        user = User.create(
+            email: email,
+            encrypted_password: encrypted_password,
+            sign_in_count: 0,
+            created_at: created_at,
+            updated_at: updated_at
+        )
+
+        user.save(:validate => false)
+        Profile.skip_callback(:validate, :after, :after_validate)
+
+        user.create_profile(
+            name: name,
+            age: prng.rand(18...70),
+            height: prng.rand(150...250),
+            weight: prng.rand(50...150),
+            add2: address[:address],
+            latitude: address[:latitude],
+            longitude: address[:longitude],
+            created_at: created_at,
+            updated_at: updated_at,
+        )
+
+        for i in 0...10
+            user.user_timeslots.create(
+                timeslot_id: prng.rand(1...24)
+            )
+        end
+    }
+end
