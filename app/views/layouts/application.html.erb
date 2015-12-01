@@ -10,20 +10,10 @@
 </head>
 <body class= '<%= controller.controller_name %>'>
 	<% if user_signed_in? && current_user.profile %>
-		<%= render 'layouts/nav' %>
+    <% cache('nav_bar') do %>
+		  <%= render 'layouts/nav' %>
+    <% end %>
 	<% end %>
-<!-- 	<% if user_signed_in? %>
-	<div id="columns">
-		<div id="side">
-			<ul>
-				<li><a href= <%= edit_profile_path(current_user.id)%>>profile</a></li>
-				<li><a href="http://www..../faq">suggested matches</a></li>
-				 <li><a href="http://www..../news">find a gym</a></li>
-
-			</ul>
-		</div>
-	 </div>
-	<% end %> -->
 		<div id="main">
 			<%= yield %>
   		</div>

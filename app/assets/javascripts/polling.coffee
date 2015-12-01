@@ -11,5 +11,5 @@ window.Poller = {
     $.get('/conversations/check_new_messages')
 }
 
-jQuery ->
-  Poller.poll() 
+# jQuery ->
+#   Poller.poll()

@@ -25,38 +25,28 @@
 
 
         <!-- Page Content -->
+        <div class="edit-section">
+        <div class="container">
+            <br><br><br>
 
+                    <h2>They workout here</h2>
 
-            <div class="edit-section">
-            <div class="container">
-                <br><br><br>
+                    <div class="people">
 
-                        <h2>They workout here</h2>
-
-                        <div class="people">
-
-                        <% @profiles.each do |profile| %>
-                         <div class="col-lg-4 col-md-4">
-                            <div class="text-center">
+                    <% @profiles.each do |profile| %>
+                      <% cache(profile) do%>
+                       <div class="col-lg-4 col-md-4">
+                          <div class="text-center">
                             <h5><%=profile.name%></h5>
-                          <a href= <%= profile_path(profile.id)%> >
-                          <%= image_tag profile.photo.url(:thumb),class:"img-thumbnail img-responsive"%>
-                           </a>
-                         </div>
+                            <a href= <%= profile_path(profile.id)%> >
+                              <%= image_tag profile.photo.url(:thumb),class:"img-thumbnail img-responsive"%>
+                            </a>
+                          </div>
                      </div>
-
-                         <% end %>
-                         </div>
-                    </div>
+                    <% end %>
+                   <% end %>
+                     </div>
                 </div>
             </div>
-        </div>
-
-
-    </div>
-
-
-
-</div>
-</body>
-</html>
+        </body>
+      </html>
