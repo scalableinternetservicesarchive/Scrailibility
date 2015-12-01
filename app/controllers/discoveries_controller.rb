@@ -25,27 +25,19 @@ class DiscoveriesController < ApplicationController
 			return
 		end
 
-=begin
 		timeslots = current_user.timeslots
-		@people = Hash.new
-		@people.default = nil
-		for timeslot in timeslots
-			for user in timeslot.users
-				if (!@people[user.id] and user.id != current_user.id)
-					@people[user.id] = user.profile
-				end
-			end
-		end
-=end
-
 		nearby = Discoveries.instance.findNearbyUsers(current_user.profile.id, 20)
 		@people = Hash.new
 		@people.default = nil
-		for person in nearby
-			if (!@people[person.id] and person.id != current_user.profile.id)
-				@people[person.id] = person
+		for timeslot in timeslots
+			users = timeslot.users.includes(:profile).where(id: nearby).limit(9)
+			for user in users
+				if (!@people[user.profile.id] and user.profile.id != current_user.profile.id)
+					@people[user.profile.id] = user.profile
+				end
 			end
 		end
+
 	end
 
 end

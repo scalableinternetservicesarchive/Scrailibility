@@ -15,7 +15,7 @@ class Discoveries < ActiveRecord::Base
     Rails.logger.debug("debug::ID is: #{pid}")
     @loc = Profile.select("latitude, longitude").find(pid)
     Rails.logger.debug("debug::loc is: #{@loc}")
-    @distance = Profile.where("(69.0 * DEGREES(ACOS(COS(RADIANS(latitude))
+    @distance = Profile.select("user_id").where("(69.0 * DEGREES(ACOS(COS(RADIANS(latitude))
     * COS(RADIANS(?))
     * COS(RADIANS(longitude) - RADIANS(?))
     + SIN(RADIANS(latitude))
