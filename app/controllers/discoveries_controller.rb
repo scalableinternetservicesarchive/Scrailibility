@@ -5,6 +5,7 @@ class DiscoveriesController < ApplicationController
 	def gym_people
 		place_id = params[:place_id]
 		@profiles = Profile.gym_people(place_id)
+	  fresh_when(@profiles)
 	end
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user
@@ -26,7 +27,7 @@ class DiscoveriesController < ApplicationController
 				end
 			end
 		end
-
+		fresh_when(@people.values)
 	end
 
 end
