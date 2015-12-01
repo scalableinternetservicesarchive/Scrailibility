@@ -262,6 +262,7 @@ GEM
       mimemagic (= 0.3.0)
     private_pub (1.0.3)
       faye
+    psych (2.0.8)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -357,6 +358,7 @@ DEPENDENCIES
   mysql
   paperclip
   private_pub
+  psych
   rails (= 4.2.4)
   rails_weak_etags
   sass-rails (~> 5.0)

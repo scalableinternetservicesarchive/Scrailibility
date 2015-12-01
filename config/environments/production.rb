@@ -4,6 +4,9 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  #use dalli as cache store
+  config.cache_store = :dalli_store, nil, { :namespace => 'Scrailibility',
+     :expires_after => 20.minutes, :compress => true, :value_max_bytes => 10000000}
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -91,7 +94,7 @@ Rails.application.configure do
       },
       :fog_directory => 'scalableinternetservices',
       :path => 'Scrailibility/profiles/images/:class/:attachment/:id/:style/:filename',
-      :url => "profiles/images/:class/:attachment/:id/:style/:filename"
-      :default_url => '/images/avatar/missing_:style.png'
+      :url => "profiles/images/:class/:attachment/:id/:style/:filename",
+      :default_url => '/images/avatar/missing_:style.gif'
     }
 end
