@@ -24,6 +24,7 @@ class DiscoveriesController < ApplicationController
 			redirect_to new_profile_path
 			return
 		end
+		# Rails.cache.delete("#{current_user.profile.city}_#{current_user.profile.post_code}_matches")
 		@profiles = Rails.cache.fetch("#{current_user.profile.city}_#{current_user.profile.post_code}_matches") do
 			timeslots = current_user.timeslots
 			nearby = Discoveries.instance.findNearbyUsers(current_user.profile.id, 20)

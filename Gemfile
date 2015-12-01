@@ -67,3 +67,7 @@ gem 'geocoder'
 gem 'google_places'
 
 gem 'dalli'
+
+gem 'rails_weak_etags'
+
+gem 'psych'
