@@ -6,7 +6,7 @@ Rails.application.configure do
 
   #use dalli as cache store
   config.cache_store = :dalli_store, nil, { :namespace => 'Scrailibility',
-     :expires_after => 20.minute, :compress => true, :value_max_bytes => 10000000}
+     :expires_after => 20.minutes, :compress => true, :value_max_bytes => 10000000}
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
