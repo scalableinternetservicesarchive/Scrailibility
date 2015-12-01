@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
-  # before_action :set_profile, only: [:show, :edit, :update, :destroy, :save]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy, :save]
   skip_before_filter :verify_authenticity_token
+  # before_action :authenticate_user!
 
   def your_gym
     @latitude = current_user.profile.latitude
@@ -48,7 +49,7 @@ class ProfilesController < ApplicationController
       redirect_to root_path
       return
     end
-    @profile = current_user.profile
+    @profile = Profile.find(params[:id])
     @action = "update"
     @timeslots = Hash.new
     @timeslots.default = nil
