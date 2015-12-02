@@ -19,7 +19,7 @@ class DiscoveriesController < ApplicationController
 		@people = Hash.new
 		@people.default = nil
 		for timeslot in timeslots
-			users = timeslot.users.where(id: nearby)
+			users = timeslot.users.where(id: nearby).limit(9)
 			for user in users
 				if (!@people[user.profile.id] and user.profile.id != current_user.profile.id)
 					@people[user.profile.id] = user.profile

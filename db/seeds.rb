@@ -5088,5 +5088,3 @@ if mutex
         end
     }
 end
-
-}
