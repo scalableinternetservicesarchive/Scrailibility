@@ -10,6 +10,3 @@ window.Poller = {
   request: ->
     $.get('/conversations/check_new_messages')
 }
-
-# jQuery ->
-#   Poller.poll()
