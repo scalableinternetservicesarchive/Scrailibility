@@ -5075,7 +5075,7 @@ addresses.each_with_index { |address, index|
 
     for i in 0...10
         user.user_timeslots.create(
-            timeslot_id: prng.rand(1...24) 
+            timeslot_id: prng.rand(1...24)
         )
     end
 }
