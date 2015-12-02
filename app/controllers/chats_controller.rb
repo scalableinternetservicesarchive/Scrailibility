@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
      # Rails.cache.delete("#{current_user.id}_chats_cache")
      @conversations = Rails.cache.fetch("#{current_user.id}_chats_cache") do
