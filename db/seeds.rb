@@ -1200,6 +1200,7 @@ if mutex
                 timeslot_id: prng.rand(1...24) 
             )
         end
+    }
 end
 
 }
