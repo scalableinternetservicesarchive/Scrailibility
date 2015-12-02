@@ -1,6 +1,8 @@
 require 'singleton'
 
 class Discoveries < ActiveRecord::Base
+  before_action :authenticate_user!
+
   self.table_name = "profiles"
   include Singleton
   def findNearbyUsers(pid, radius)
