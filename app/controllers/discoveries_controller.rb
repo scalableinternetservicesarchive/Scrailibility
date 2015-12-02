@@ -6,7 +6,7 @@ class DiscoveriesController < ApplicationController
 		place_id = params[:place_id]
 		#save/get people's profile into cache
 		@profiles = Rails.cache.fetch("people_at_gym_#{place_id}") do
-			profiles = Profile.gym_people_profile(place_id)
+			profiles = Profile.gym_people(place_id)
 			# p_id = Array.new
 			# profiles.each do |profile|
 			# 	p_id.push(profile.id)
