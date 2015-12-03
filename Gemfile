@@ -71,3 +71,5 @@ gem 'dalli'
 gem 'rails_weak_etags'
 
 gem 'psych'
+
+gem 'actionpack-page_caching'

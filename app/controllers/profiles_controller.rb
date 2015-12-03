@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_action :authenticate_user!
 
+  caches_page :new
+
   def your_gym
     @latitude = current_user.profile.latitude
     @longitude = current_user.profile.longitude
