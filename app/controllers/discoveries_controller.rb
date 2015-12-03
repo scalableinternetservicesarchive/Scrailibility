@@ -15,7 +15,7 @@ class DiscoveriesController < ApplicationController
 			# p_id
 			profiles
 		end
-		# fresh_when(@profiles)
+		fresh_when(@profiles)
 	end
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user

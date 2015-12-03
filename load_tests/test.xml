@@ -23,13 +23,15 @@
     <arrivalphase phase="3" duration="30" unit="second">
       <users arrivalrate="4" unit="second"></users>
     </arrivalphase>
-<!--
+
    <arrivalphase phase="4" duration="30" unit="second">
      <users arrivalrate="8" unit="second"></users>
    </arrivalphase>
    <arrivalphase phase="5" duration="30" unit="second">
      <users arrivalrate="16" unit="second"></users>
    </arrivalphase>
+
+<!--
    <arrivalphase phase="6" duration="30" unit="second">
      <users arrivalrate="32" unit="second"></users>
    </arrivalphase>
@@ -58,9 +60,91 @@
   </options>
 
   <sessions>
-    <session name="http-example" probability="100" type="ts_http">
+    <session name="http-example" probability="80" type="ts_http">
+      <!-- start out at the main page. -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
 
-      <!-- start out at the dashboard. -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <!-- <dyn_variable name="authenticity_token"/> -->
+        <http url="/users/sign_in" method="GET" version="1.1"></http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request subst="true">
+        <http url="/users/sign_in" method="POST" version="1.1"
+          content_type="application/x-www-form-urlencoded"
+          contents="utf8=%E2%9C%93&amp;user%5Bemail%5D=tsunguser%40test%2Ecom&amp;user%5Bpassword%5D=123456789&amp;user%5Bremember_me%5D=0&amp;commit=Log+in"/>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http
+          url="/discovery"
+          version="1.1"
+          method="GET" >
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+      <request>
+        <http
+          url="/discovery"
+          version="1.1"
+          method="GET" >
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+      <request>
+        <http
+          url="/discovery"
+          version="1.1"
+          method="GET" >
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http
+          url="gyms/nearby_gym"
+          version="1.1"
+          method="GET" >
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http
+          url="gyms/nearby_gym"
+          version="1.1"
+          method="GET" >
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/users/sign_out' version='1.1' method='DELETE'></http>
+      </request>
+
+    </session>
+
+    <session name="sign-up" probability="20" type="ts_http">
+
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
@@ -82,12 +166,10 @@
       </setdynvars>
 
       <request>
-        <dyn_variable name="authenticity_token"/>
+        <!-- <dyn_variable name="authenticity_token"/> -->
         <http url="/users/sign_up" method="GET" version="1.1"></http>
       </request>
 
-      <!-- post to /communities to create a community.
-           remember the url of the created community so we can delete it later -->
       <request subst="true">
         <dyn_variable name="session_cookie" re="[Ss]et-Cookie: _Scrailibility_session=(.*);"/>
         <dyn_variable name="created_user_profile_url" re="[Ll]ocation: (http://.*)\r"/>
@@ -95,7 +177,7 @@
           url='/users'
           version='1.1'
           method='POST'
-          contents='user%5Bemail%5D=%%_random_email%%%40gmail%2Ecom&amp;user%5Bpassword%5D=password&amp;user%5Bpassword_confirmation%5D=password&amp;authenticity_token=%%_authenticity_token%%&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'>
+          contents='user%5Bemail%5D=%%_random_email%%%40gmail%2Ecom&amp;user%5Bpassword%5D=password&amp;user%5Bpassword_confirmation%5D=password&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'>
         </http>
       </request>
 
@@ -105,7 +187,6 @@
 
       <thinktime value="5" random="true"></thinktime>
 
-      <!-- create a new submission in the community we just created -->
       <setdynvars sourcetype="random_number" start="100" end="200">
         <var name="random_weight" />
       </setdynvars>
@@ -114,12 +195,14 @@
         <var name="random_height" />
       </setdynvars>
 
+      <thinktime value="10" random="true"></thinktime>
+
       <request subst="true">
         <http
           url='/profiles'
           version='1.1'
           method='POST'
-      contents='time%5B1%5D=1&amp;time%5B16%5D=16&amp;profile%5Bname%5D=calvin&amp;profile%5Badd1%5D=405%20Hilgard%20Avenue&amp;profile%5Bcity%5D=Los%20Angeles&amp;profile%5Bstate%5D=CA&amp;profile%5Bpost_code%5D=90095&amp;authenticity_token=%%_authenticity_token%%&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'
+      contents='time%5B1%5D=1&amp;time%5B16%5D=16&amp;profile%5Bname%5D=calvin&amp;profile%5Badd1%5D=405%20Hilgard%20Avenue&amp;profile%5Bcity%5D=Los%20Angeles&amp;profile%5Bstate%5D=CA&amp;profile%5Bpost_code%5D=90095&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'
         ></http>
       </request>
 
@@ -131,6 +214,8 @@
         </http>
       </request>
 
+      <thinktime value="2" random="true"></thinktime>
+
       <request>
         <http
           url="gyms/nearby_gym"
@@ -139,19 +224,19 @@
         </http>
       </request>
 
+      <thinktime value="2" random="true"></thinktime>
+
       <request>
-        <http
-          url="gym_people/ChIJIwA4-4G8woARKkrwmSTO8DU"
-          version="1.1"
-          method="GET" >
-        </http>
+        <http url='/users/sign_out' version='1.1' method='DELETE'></http>
       </request>
 
+<!--
       <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
         io:format([126, $p, 126, $n, 126, $n], [DynVars]),
         ok end.">
         <var name="dump" />
       </setdynvars>
+-->
     </session>
   </sessions>
 </tsung>
