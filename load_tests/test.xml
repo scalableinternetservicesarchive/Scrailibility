@@ -23,15 +23,13 @@
     <arrivalphase phase="3" duration="30" unit="second">
       <users arrivalrate="4" unit="second"></users>
     </arrivalphase>
-
+<!--
    <arrivalphase phase="4" duration="30" unit="second">
      <users arrivalrate="8" unit="second"></users>
    </arrivalphase>
    <arrivalphase phase="5" duration="30" unit="second">
      <users arrivalrate="16" unit="second"></users>
    </arrivalphase>
-
-<!--
    <arrivalphase phase="6" duration="30" unit="second">
      <users arrivalrate="32" unit="second"></users>
    </arrivalphase>
@@ -60,7 +58,7 @@
   </options>
 
   <sessions>
-    <session name="http-example" probability="80" type="ts_http">
+    <session name="http-example" probability="99" type="ts_http">
       <!-- start out at the main page. -->
       <request>
         <http url='/' version='1.1' method='GET'></http>
@@ -69,7 +67,6 @@
       <thinktime value="2" random="true"></thinktime>
 
       <request>
-        <!-- <dyn_variable name="authenticity_token"/> -->
         <http url="/users/sign_in" method="GET" version="1.1"></http>
       </request>
 
@@ -91,29 +88,9 @@
         </http>
       </request>
 
-      <thinktime value="2" random="true"></thinktime>
       <request>
         <http
           url="/discovery"
-          version="1.1"
-          method="GET" >
-        </http>
-      </request>
-
-      <thinktime value="2" random="true"></thinktime>
-      <request>
-        <http
-          url="/discovery"
-          version="1.1"
-          method="GET" >
-        </http>
-      </request>
-
-      <thinktime value="2" random="true"></thinktime>
-
-      <request>
-        <http
-          url="gyms/nearby_gym"
           version="1.1"
           method="GET" >
         </http>
@@ -129,10 +106,25 @@
 
       <request>
         <http
-          url="gyms/nearby_gym"
+          url="/discovery"
           version="1.1"
           method="GET" >
         </http>
+      </request>
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http
+          url="/discovery"
+          version="1.1"
+          method="GET" >
+        </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
       </request>
 
       <thinktime value="2" random="true"></thinktime>
@@ -143,7 +135,7 @@
 
     </session>
 
-    <session name="sign-up" probability="20" type="ts_http">
+    <session name="sign-up" probability="1" type="ts_http">
 
       <request>
         <http url='/' version='1.1' method='GET'></http>
@@ -164,11 +156,6 @@
       <setdynvars sourcetype="erlang" callback="ts_user_server:get_unique_id">
         <var name="random_email" />
       </setdynvars>
-
-      <request>
-        <!-- <dyn_variable name="authenticity_token"/> -->
-        <http url="/users/sign_up" method="GET" version="1.1"></http>
-      </request>
 
       <request subst="true">
         <dyn_variable name="session_cookie" re="[Ss]et-Cookie: _Scrailibility_session=(.*);"/>
@@ -217,11 +204,23 @@
       <thinktime value="2" random="true"></thinktime>
 
       <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
         <http
-          url="gyms/nearby_gym"
+          url="/discovery"
           version="1.1"
           method="GET" >
         </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
       </request>
 
       <thinktime value="2" random="true"></thinktime>
