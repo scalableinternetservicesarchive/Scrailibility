@@ -160,7 +160,7 @@ a:hover,
 a:focus {
     text-decoration: none;
     background-color: #428bca;
-	color:#020202;
+    color:#020202;
 }
 
 
@@ -183,7 +183,7 @@ a:focus {
 
 .navbar-brand:hover {
     background-color:transparent;
-	opacity:0.8;
+    opacity:0.8;
 }
 
 .navbar-custom a {
@@ -248,9 +248,9 @@ text-align: center;position:absolute;top:10%;left:5%;}
 .btn-huge {
     padding: 25px;
     font-size: 16px;
-	border:1px solid;
-	letter-spacing:0.1em;
-	font-family: 'Orbitron', sans-serif;
+    border:1px solid;
+    letter-spacing:0.1em;
+    font-family: 'Orbitron', sans-serif;
 }
 
  @media(min-width:767px){ .navbar {
@@ -380,6 +380,55 @@ border-radius: 50px;}
     color: #000;
     background-color: #3893d0;
 }
+
+
+  table {
+    border-collapse: collapse;
+    width:  600px;
+    
+  }
+
+  table tr td {
+    padding: 5px;
+    vertical-align: center;
+  }
+
+  .list_image {
+    width:  60px;
+    height: 70px;
+  }
+
+  .list_description {
+    width: 60%;
+
+    dl {
+      margin: 0;
+    }
+
+    dt {
+      color:        #244;
+      font-weight:  bold;
+      font-size:    larger;
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  .list_actions {
+    font-size:    x-small;
+    text-align:   right;
+    padding-left: 1em;
+  }
+
+  .list_line_even {
+    color:        #FFFFFF;
+  }
+  .list_line_odd {
+   color:        #244;
+  }
+
 
 
 

@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20151201232414) do
     t.float    "latitude",           limit: 24
     t.float    "longitude",          limit: 24
     t.datetime "birthday"
+    t.string   "birthyear",          limit: 255
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
     t.integer  "user_id",            limit: 4
