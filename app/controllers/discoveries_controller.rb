@@ -1,5 +1,5 @@
 class DiscoveriesController < ApplicationController
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 
 
 	def gym_people
@@ -20,6 +20,9 @@ class DiscoveriesController < ApplicationController
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user
 	def show
+		if ! current_user
+			current_user = User.find(1)
+		end
 		if current_user.profile.nil?
 			redirect_to new_profile_path
 			return
