@@ -5042,6 +5042,12 @@ rescue ActiveRecord::RecordNotUnique
 end
 
 if mutex
+    testuser = User.create(
+        email: 'tsunguser@test.com',
+        encrypted_password: '$2a$10$Hs1o5ATSbbGCrQB1PU4lDuJTjsCUwdC5ZZLHkRynTz4pTdue8D.3y',
+        sign_in_count: 0,
+    )
+    testuser.save(:validate => false)
 
     for i in 0..23
         for j in 0..1
