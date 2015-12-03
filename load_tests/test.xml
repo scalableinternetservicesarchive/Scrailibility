@@ -67,7 +67,6 @@
       <thinktime value="2" random="true"></thinktime>
 
       <request>
-        <dyn_variable name="authenticity_token"/>
         <http url="/users/sign_in" method="GET" version="1.1"></http>
       </request>
       
@@ -76,7 +75,7 @@
       <request subst="true">
         <http url="/users/sign_in" method="POST" version="1.1" 
           content_type="application/x-www-form-urlencoded"
-          contents="utf8=%E2%9C%93&amp;authenticity_token=%%_authenticity_token%%&amp;user%5Bemail%5D=tsunguser%40test%2Ecom&amp;user%5Bpassword%5D=123456789&amp;user%5Bremember_me%5D=0&amp;commit=Log+in"/>
+          contents="utf8=%E2%9C%93&amp;user%5Bemail%5D=tsunguser%40test%2Ecom&amp;user%5Bpassword%5D=123456789&amp;user%5Bremember_me%5D=0&amp;commit=Log+in"/>
       </request>
 
       <request>
@@ -143,11 +142,6 @@
         <var name="random_email" />
       </setdynvars>
 
-      <request>
-        <dyn_variable name="authenticity_token"/>
-        <http url="/users/sign_up" method="GET" version="1.1"></http>
-      </request>
-
       <request subst="true">
         <dyn_variable name="session_cookie" re="[Ss]et-Cookie: _Scrailibility_session=(.*);"/>
         <dyn_variable name="created_user_profile_url" re="[Ll]ocation: (http://.*)\r"/>
@@ -155,7 +149,7 @@
           url='/users'
           version='1.1'
           method='POST'
-          contents='user%5Bemail%5D=%%_random_email%%%40gmail%2Ecom&amp;user%5Bpassword%5D=password&amp;user%5Bpassword_confirmation%5D=password&amp;authenticity_token=%%_authenticity_token%%&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'>
+          contents='user%5Bemail%5D=%%_random_email%%%40gmail%2Ecom&amp;user%5Bpassword%5D=password&amp;user%5Bpassword_confirmation%5D=password&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'>
         </http>
       </request>
 
@@ -180,7 +174,7 @@
           url='/profiles'
           version='1.1'
           method='POST'
-      contents='time%5B1%5D=1&amp;time%5B16%5D=16&amp;profile%5Bname%5D=calvin&amp;profile%5Badd1%5D=405%20Hilgard%20Avenue&amp;profile%5Bcity%5D=Los%20Angeles&amp;profile%5Bstate%5D=CA&amp;profile%5Bpost_code%5D=90095&amp;authenticity_token=%%_authenticity_token%%&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'
+      contents='time%5B1%5D=1&amp;time%5B16%5D=16&amp;profile%5Bname%5D=calvin&amp;profile%5Badd1%5D=405%20Hilgard%20Avenue&amp;profile%5Bcity%5D=Los%20Angeles&amp;profile%5Bstate%5D=CA&amp;profile%5Bpost_code%5D=90095&amp;utf8=%E2%9C%93&amp;commit=Sign+Up'
         ></http>
       </request>
 
