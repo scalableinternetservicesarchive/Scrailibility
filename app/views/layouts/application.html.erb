@@ -9,9 +9,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body class= '<%= controller.controller_name %>'>
-	<% if user_signed_in? && current_user.profile %>
+	<% if user_signed_in? and current_user.profile %>
     <% cache('nav_bar') do %>
-		  <%= render 'layouts/nav' %>
+		  <%= render 'layouts/_nav' %>
     <% end %>
 	<% end %>
 		<div id="main">
