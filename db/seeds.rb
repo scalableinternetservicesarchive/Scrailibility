@@ -5042,18 +5042,34 @@ rescue ActiveRecord::RecordNotUnique
 end
 
 if mutex
+    for i in 0..23
+        for j in 0..1
+            time = "#{i}:#{j*30}:00"
+            Timeslot.create(begintime: time)
+        end
+    end
+
+    prng = Random.new
     testuser = User.create(
         email: 'tsunguser@test.com',
         encrypted_password: '$2a$10$Hs1o5ATSbbGCrQB1PU4lDuJTjsCUwdC5ZZLHkRynTz4pTdue8D.3y',
         sign_in_count: 0,
     )
     testuser.save(:validate => false)
-
-    for i in 0..23
-        for j in 0..1
-            time = "#{i}:#{j*30}:00"
-            Timeslot.create(begintime: time)
-        end
+    Profile.skip_callback(:validate, :after, :after_validate)
+    testuser.create_profile(
+        name: 'tsunguser',
+        age: prng.rand(18...70),
+        height: prng.rand(150...250),
+        weight: prng.rand(50...150),
+        add2: 'Los Angeles, CA',
+        latitude: 34.0658079,
+        longitude: -118.4370091,
+    )
+    for i in 0...10
+        testuser.user_timeslots.create(
+            timeslot_id: prng.rand(1...24)
+        )
     end
 
     addresses.each_with_index { |address, index|
@@ -5062,7 +5078,6 @@ if mutex
         encrypted_password = 'seedpassword'
         created_at = DateTime.now
         updated_at = created_at
-        prng = Random.new
 
         user = User.create(
             email: email,
