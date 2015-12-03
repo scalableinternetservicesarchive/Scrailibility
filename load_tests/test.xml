@@ -89,16 +89,6 @@
       <thinktime value="2" random="true"></thinktime>
 
       <request>
-        <http
-          url="gyms/nearby_gym"
-          version="1.1"
-          method="GET" >
-        </http>
-      </request>
-      
-      <thinktime value="2" random="true"></thinktime>
-      
-      <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
 
@@ -106,10 +96,16 @@
 
       <request>
         <http
-          url="gyms/nearby_gym"
+          url="/discovery"
           version="1.1"
           method="GET" >
         </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
       </request>
 
       <thinktime value="2" random="true"></thinktime>
@@ -189,11 +185,23 @@
       <thinktime value="2" random="true"></thinktime>
 
       <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
         <http
-          url="gyms/nearby_gym"
+          url="/discovery"
           version="1.1"
           method="GET" >
         </http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
       </request>
 
       <thinktime value="2" random="true"></thinktime>
