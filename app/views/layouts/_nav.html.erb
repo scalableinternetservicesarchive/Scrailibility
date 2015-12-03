@@ -16,29 +16,20 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
-        <% if user_signed_in? && current_user.profile %>
-            <li>
-              <%= link_to "My Profile", edit_profile_path(current_user.profile.id) %>
-            </li>
-            <li>
-              <%= link_to "Gym&people", '/gyms/nearby_gym' %>
-            </li>
-            <li>
-              <%= link_to "Nearby", '/discovery' %>
-            </li>
-            <li id="notification">
-              <%= link_to "chats", '/chats' %>
-            <li>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete	  %>
-            </li>
-        <% else %>
-            <li>
-              <%= link_to "Signin", new_user_session_path %>
-            </li>
-            <li>
-              <%= link_to "Signup", new_user_registration_path %>
-            </li>
-        <% end %>
+          <li>
+            <%= link_to "My Profile", edit_profile_path(1) %>
+          </li>
+          <li>
+            <%= link_to "Gym&people", '/gyms/nearby_gym' %>
+          </li>
+          <li>
+            <%= link_to "Nearby", '/discovery' %>
+          </li>
+          <li id="notification">
+            <%= link_to "chats", '/chats' %>
+          <li>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete	  %>
+          </li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->

@@ -91,6 +91,7 @@ Rails.application.configure do
       },
       :fog_directory => 'scalableinternetservices',
       :path => 'Scrailibility/profiles/images/:class/:attachment/:id/:style/:filename',
-      :url => "profiles/images/:class/:attachment/:id/:style/:filename"
+      :url => "profiles/images/:class/:attachment/:id/:style/:filename",
+      :default_url => '/images/avatar/missing_:style.gif'
     }
 end
