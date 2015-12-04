@@ -10,7 +10,9 @@
 </head>
 <body class= '<%= controller.controller_name %>'>
 	<% if user_signed_in? && current_user.profile %>
+    <% cache('nav_bar') do %>
 		  <%= render 'layouts/nav' %>
+    <% end %>
 	<% end %>
 		<div id="main">
 			<%= yield %>

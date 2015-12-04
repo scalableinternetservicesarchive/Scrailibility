@@ -16,8 +16,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
+          <% cache("#{current_user.id}_nav_bar", :expires_in => 30.minutes) do %>
           <li>
-            <%= link_to "My Profile", edit_profile_path(1) %>
+            <%= link_to "My Profile", edit_profile_path(current_user.profile.id) %>
           </li>
           <li>
             <%= link_to "Gym&people", '/gyms/nearby_gym' %>
@@ -30,6 +31,7 @@
           <li>
             <%= link_to "Logout", destroy_user_session_path, method: :delete	  %>
           </li>
+        <% end %>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
