@@ -20,11 +20,8 @@ class DiscoveriesController < ApplicationController
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user
 	def show
-		#here used to test caching
 		if ! current_user
 			current_user = User.find(1)
-			current_user.profile.city = 'LA'
-			current_user.profile.post_code = '90024'
 		end
 		if current_user.profile.nil?
 			redirect_to new_profile_path
