@@ -2,27 +2,27 @@
 
 <head>
     <meta charset="utf-8">
-    
-   
+
+
     <title>edit</title>
 
-    
+
 
     <!-- Fonts -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'> 
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'>
 
-    
-    
+
+
 
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
 <%= render 'layouts/nav' %>
-        
+
 
         <!-- Page Content -->
 
@@ -30,11 +30,11 @@
             <div class="edit-section">
             <div class="container">
                 <br><br><br>
-           
+
                         <h2>Find who is here</h2>
 
                          <table align="center" >
-                        
+
 
 
                         <% @people.each do |uid, profile| %>
@@ -57,7 +57,7 @@
                                 <dd><font size="2" face="Verdana" color="<%= cycle('#0072E3', '#6F00D2') %>">Postcode:<%=profile.post_code%></font></dd>
 
                                 </dl>
-                                
+
                             </td>
                             <td>
 
@@ -68,38 +68,32 @@
           <% end %>
 
 
-                                
+
                             </td>
 
-                         
-                  
+
+
 
                   </tr>
 
                          <% end %>
-                           
+
                            </table>
 
-
-
-
-
-
-
-
+                           <li class="previous"><%= link_to "Previous", previous %></li>
+                           <li class="next"><%= link_to "Next", next %></li>
+                           
                          </div>
                     </div>
                 </div>
             </div>
         </div>
-  
+
 
     </div>
-  
+
 
 
 </div>
 </body>
 </html>
-                      
-                      
