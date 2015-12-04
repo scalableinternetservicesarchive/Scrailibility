@@ -1,6 +1,8 @@
 class DiscoveriesController < ApplicationController
 	before_action :authenticate_user!
 
+  @@highest = 0
+  @@previous = 0
 
 	def gym_people
 		place_id = params[:place_id]
@@ -31,7 +33,7 @@ class DiscoveriesController < ApplicationController
 			people = Hash.new
 			people.default = nil
 			for timeslot in timeslots
-				users = timeslot.users.includes(:profile).where(id: nearby).limit(9)
+				users = timeslot.users.includes(:profile).where(id: nearby).limit(9).offset(@@highest)
 				for user in users
 					if (!people[user.profile.id] and user.profile.id != current_user.profile.id)
 						people[user.profile.id] = user.profile
@@ -41,6 +43,17 @@ class DiscoveriesController < ApplicationController
 			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_matches", people, expires_in: 2.minutes)
 			people
 		end
+		@@previous = @@highest
+		@@highest = @people.max_by{|k,v| v}
 		fresh_when(@people.values)
+	end
+
+	def next
+    redirect_to :back
+	end
+
+	def previous
+	  @@highest = @@previous
+    redirect_to :back
 	end
 end
