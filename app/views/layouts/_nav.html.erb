@@ -21,10 +21,13 @@
             <%= link_to "My Profile", edit_profile_path(current_user.profile.id) %>
           </li>
           <li>
-            <%= link_to "Gym&people", '/gyms/nearby_gym' %>
+            <%= link_to "Discovery", '/discovery' %>
           </li>
           <li>
-            <%= link_to "Nearby", '/discovery' %>
+            <%= link_to "Gym", '/gyms/nearby_gym' %>
+          </li>
+          <li>
+            <%= link_to "People", '/discovery/near' %>
           </li>
           <li id="notification">
             <%= link_to "chats", '/chats' %>

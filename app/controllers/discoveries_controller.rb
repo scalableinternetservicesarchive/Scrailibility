@@ -17,6 +17,23 @@ class DiscoveriesController < ApplicationController
 		end
 		fresh_when(@profiles)
 	end
+
+	#show near people
+	def near
+		if current_user.profile.nil?
+			redirect_to new_profile_path
+			return
+		end
+		# Rails.cache.delete("#{current_user.profile.city}_#{current_user.profile.post_code}_matches")
+		@people = Rails.cache.fetch("#{current_user.profile.city}_#{current_user.profile.post_code}_nearby_1") do
+			timeslots = current_user.timeslots
+			nearby = Discoveries.instance.findNearbyUsers(current_user.profile.id, 20)
+			people = Profile.where(id: nearby)
+			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_nearby_1", people, expires_in: 2.minutes)
+			people
+		end
+		fresh_when(@people)
+	end
 	#need to change here! currently just show all the registered users
 	#how to verify the identify of current user
 	def show
@@ -25,7 +42,7 @@ class DiscoveriesController < ApplicationController
 			return
 		end
 		# Rails.cache.delete("#{current_user.profile.city}_#{current_user.profile.post_code}_matches")
-		@people = Rails.cache.fetch("#{current_user.profile.city}_#{current_user.profile.post_code}_matches") do
+		@people = Rails.cache.fetch("#{current_user.profile.city}_#{current_user.profile.post_code}_matche") do
 			timeslots = current_user.timeslots
 			nearby = Discoveries.instance.findNearbyUsers(current_user.profile.id, 20)
 			people = Hash.new
@@ -38,7 +55,7 @@ class DiscoveriesController < ApplicationController
 					end
 				end
 			end
-			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_matches", people, expires_in: 2.minutes)
+			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_matche", people, expires_in: 2.minutes)
 			people
 		end
 		fresh_when(@people.values)

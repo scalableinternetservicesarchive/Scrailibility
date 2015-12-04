@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'profiles/your_gym', to: 'profiles#your_gym'
   get 'save_gym_information/:place_id', to: 'profiles#save_gym_information'
   get 'gym_people/:place_id', to: 'discoveries#gym_people'
+  get '/discovery/near', to: 'discoveries#near'
+  
   resources :profiles
   resource :discovery
   devise_for :users, controllers: { registrations: "registrations" }
