@@ -1,19 +1,33 @@
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'> 
-    
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></br>
+  <br></br>
+<table align="center" >
 <% @conversations.each do |conversation| %>
+<tr>
+	<td align="center" style="width:300px; height: 21px;">
+
 <p class="single-chat">
-  <br></br>
-  <br></br>
+  
   <span class="chat-image">
 
-    <%= link_to image_tag(the_other(conversation).photo(:thumb)),"#", class: "start-conversation",
+    <%= link_to image_tag(the_other(conversation).photo(:thumb)),"#", class:"img-thumbnail img-responsive",
             "data-sid" => current_user.id, "data-rip" => the_other(conversation).user_id%>
 
     <%= link_to conversation.last_message,"#", class: "start-conversation",
                 "data-sid" => current_user.id, "data-rip" => the_other(conversation).user_id%>
   </span>
 </p>
+</td>
 <% end %>
+</tr>
+</table>
+
+
