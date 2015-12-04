@@ -11,7 +11,7 @@ class DiscoveriesController < ApplicationController
 			# profiles.each do |profile|
 			# 	p_id.push(profile.id)
 			# end
-			Rails.cache.write("people_at_gym_#{place_id}", profiles, expires_in: 2.minute)
+			Rails.cache.write("people_at_gym_#{place_id}", profiles, expires_in: 10.seconds)
 			# p_id
 			profiles
 		end
@@ -28,7 +28,7 @@ class DiscoveriesController < ApplicationController
 		@people = Rails.cache.fetch("#{current_user.profile.city}_#{current_user.profile.post_code}_nearby") do
 			nearby = Discoveries.instance.findNearbyUsers(current_user.profile.id, 10)
 			people = Profile.where(id: nearby).limit(50)
-			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_nearby_1", people, expires_in: 2.minutes)
+			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_nearby", people, expires_in: 10.seconds)
 			people
 		end
 		fresh_when(@people)
@@ -54,7 +54,7 @@ class DiscoveriesController < ApplicationController
 					end
 				end
 			end
-			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_matche", people, expires_in: 2.minutes)
+			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_matche", people, expires_in: 10.seconds)
 			people
 		end
 		fresh_when(@people.values)
