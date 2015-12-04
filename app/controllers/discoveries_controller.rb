@@ -26,9 +26,8 @@ class DiscoveriesController < ApplicationController
 		end
 		# Rails.cache.delete("#{current_user.profile.city}_#{current_user.profile.post_code}_matches")
 		@people = Rails.cache.fetch("#{current_user.profile.city}_#{current_user.profile.post_code}_nearby_1") do
-			timeslots = current_user.timeslots
 			nearby = Discoveries.instance.findNearbyUsers(current_user.profile.id, 20)
-			people = Profile.where(id: nearby)
+			people = Profile.where(id: nearby).limit(30)
 			Rails.cache.write("#{current_user.profile.city}_#{current_user.profile.post_code}_nearby_1", people, expires_in: 2.minutes)
 			people
 		end
